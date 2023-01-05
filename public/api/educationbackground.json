@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Higher School Graduation",
+        "meta": "Abc College.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
+        "year": "2008 - 2010"
+    },
+    {
+        "id": 2,
+        "title": "Bachelor of Sciences",
+        "meta": "Def University.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
+        "year": "2010 - 2014"
+    },
+    {
+        "id": 3,
+        "title": "Masters of Sciences",
+        "meta": "Def University.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
+        "year": "2014 - 2016"
+    }
+]
