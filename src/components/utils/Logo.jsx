@@ -6,7 +6,8 @@ const Logo = ({ url = "/", text = false }) => {
       <a className="sitelogo py-2">
         {text ? (
           <span className="text-4xl font-bold uppercase leading-none text-primary">
-            Bieber
+            {text}
+            <span className="text-white">.</span>
           </span>
         ) : (
           <>
@@ -14,7 +15,7 @@ const Logo = ({ url = "/", text = false }) => {
             <img
               className="h-8 max-h-full w-auto"
               src="/images/logo.png"
-              alt="Bieber"
+              alt="matewilk"
             />
           </>
         )}

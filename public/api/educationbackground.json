@@ -1,23 +1,30 @@
 [
-    {
-        "id": 1,
-        "title": "Higher School Graduation",
-        "meta": "Abc College.",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
-        "year": "2008 - 2010"
-    },
-    {
-        "id": 2,
-        "title": "Bachelor of Sciences",
-        "meta": "Def University.",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
-        "year": "2010 - 2014"
-    },
-    {
-        "id": 3,
-        "title": "Masters of Sciences",
-        "meta": "Def University.",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur donec gravida ullamcorper cum id. Sit viverra donec in ornare euismod.",
-        "year": "2014 - 2016"
-    }
+  {
+    "id": 1,
+    "title": "Master of Computer Science",
+    "meta": "University of Lodz.",
+    "text": "Project and implementation of a web-based email client featuring an adaptive AI-powered anti-spam filter",
+    "year": "2008 - 2009"
+  },
+  {
+    "id": 2,
+    "title": "IAESTE Scholarship",
+    "meta": "Universitat de Girona.",
+    "text": "Recipient of The International Association for the Exchange of Students for Technical Experience Scholarship in Spain.",
+    "year": "2007 - 2008"
+  },
+  {
+    "id": 3,
+    "title": "Member of the Student Scientific Club",
+    "meta": "University of Lodz.",
+    "text": "Member of Microprocessor Autonomous System Academic Club - MIPSA.",
+    "year": "2005 - 2007"
+  },
+  {
+    "id": 4,
+    "title": "Faculty of Electrical, Electronic, Computer and Control Engineering.",
+    "meta": "University of Lodz.",
+    "text": "Student of the Telecommunication and Computer Science Department.",
+    "year": "2003 - 2009"
+  }
 ]

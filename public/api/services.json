@@ -1,20 +1,20 @@
 [
-    {
-        "id": 1,
-        "title": "Ui/Ux Design",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue diam etiam venenatis mi tristique amet cras diam etiam.",
-        "icon": "/icons/quill-pen-line.svg"
-    },
-    {
-        "id": 2,
-        "title": "Web Development",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue diam etiam venenatis mi tristique amet cras diam etiam.",
-        "icon": "/icons/code-s-slash-line.svg"
-    },
-    {
-        "id": 3,
-        "title": "Mobile App Development",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue diam etiam venenatis mi tristique amet cras diam etiam.",
-        "icon": "/icons/smartphone-line.svg"
-    }
+  {
+    "id": 1,
+    "title": "Front-end Development",
+    "text": "Responsive web design, mobile-friendly layouts and back-end integration. Proficient in multiple JavaScript frameworks.",
+    "icon": "/icons/smartphone-line.svg"
+  },
+  {
+    "id": 2,
+    "title": "Back-end Development",
+    "text": "API development and maintenance, front-end integration, and cloud infrastructure development on platforms such as AWS and Azure.",
+    "icon": "/icons/code-s-slash-line.svg"
+  },
+  {
+    "id": 3,
+    "title": "System Architecture",
+    "text": "Defining architecture of a project, identifying and evaluating appropriate technologies, designing and implementing scalable solutions.",
+    "icon": "/icons/quill-pen-line.svg"
+  }
 ]

@@ -1,42 +1,34 @@
 [
-    {
-        "id": 1,
-        "name": "David Chester",
-        "meta": "Client - Envato.com",
-        "givenreview": 5.0,
-        "image": "/images/user-avatar-1.png",
-        "text": "Working with Bieber is very good experience for me. He’s a good person. If I need developer in future, I’ll definately hire him."
-    },
-    {
-        "id": 2,
-        "name": "Emma Watson",
-        "meta": "Client - Envato.com",
-        "givenreview": 4.2,
-        "image": "/images/user-avatar-4.png",
-        "text": "Working with Bieber is very good experience for me. He’s a good person. If I need developer in future, I’ll definately hire him."
-    },
-    {
-        "id": 3,
-        "name": "Jonathon Doe",
-        "meta": "Client - Envato.com",
-        "givenreview": 4.2,
-        "image": "/images/user-avatar-3.png",
-        "text": "Working with Bieber is very good experience for me. He’s a good person. If I need developer in future, I’ll definately hire him."
-    },
-    {
-        "id": 4,
-        "name": "William Bieber",
-        "meta": "Client - Envato.com",
-        "givenreview": 4.7,
-        "image": "/images/user-avatar-2.png",
-        "text": "Working with Bieber is very good experience for me. He’s a good person. If I need developer in future, I’ll definately hire him."
-    },
-    {
-        "id": 5,
-        "name": "Bob Harry",
-        "meta": "Client - Envato.com",
-        "givenreview": 5,
-        "image": "/images/user-avatar-2.png",
-        "text": "Working with Bieber is very good experience for me. He’s a good person. If I need developer in future, I’ll definately hire him."
-    }
+  {
+    "id": 1,
+    "name": "Jason Wright",
+    "meta": "Senior Software Engineer - Zoopla",
+    "givenreview": 5.0,
+    "image": "/images/jason-wright.jpeg",
+    "text": "As soon as Mat started work at Zoopla I was so impressed with the speed at which he integrated with the team and started providing value to our projects - he very much hit the ground running, which hasn’t always been the case with new joiners in our team. He very quickly was able to suggest improvements and implement them in an efficient way, and could be trusted to work solo or pairing with other engineers. I’d highly recommend him."
+  },
+  {
+    "id": 2,
+    "name": "Liwen Knight-Zhang",
+    "meta": "Head of Product Platforms - News UK",
+    "givenreview": 5.0,
+    "image": "/images/liwen-knight-zhang.jpeg",
+    "text": "I had the opportunity to work with Mat on two very distinct large projects. His attention to detail and his calmness under pressure are impressive. Mat is never afraid of new challenges and has always delivered the work above and beyond. I highly recommend Mat to any team who is looking for an all-round engineer. "
+  },
+  {
+    "id": 3,
+    "name": "Pratik Ghedia",
+    "meta": "Senior QA Engineer - DAZN.com",
+    "givenreview": 5.0,
+    "image": "/images/pratik-ghedia.jpeg",
+    "text": "Mat and I worked on a project at DAZN where he was an invaluable member of the team. As well as being a full stack engineer, he helped implement the CI-CD pipelines in Drone.io for building and deploying our application in AWS using terraform. Mat is fully on board with Developers and Testers working side by side. In addition, Mat was involved in writing the component, integration and end-to-end tests thus committed to delivering the highest standard of code and test quality. Mat also brought in fresh ideas on improvements to ways of working. I would highly recommend Mat for any future positions as he would be great asset to the team."
+  },
+  {
+    "id": 4,
+    "name": "Jaxo Natarajan",
+    "meta": "Front-end Developer - British Airways",
+    "givenreview": 5.0,
+    "image": "/images/jaxo-natarajan.jpeg",
+    "text": "I and Matt worked together at Telefonica for over a year. Not only had he been a key member of the team, he also had taken ownership of major chunks of the technical aspects of the project. His diligence and commitment to develop and implement several core features of the project is particularly applaudable. Matt’s skills and leadership qualities would make him an invaluable addition to any information technology development team. In addition to the impressive portfolio of professional accomplishments, he had one of the best personalities I’ve ever had the joy of working with."
+  }
 ]

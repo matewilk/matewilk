@@ -42,12 +42,12 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
                     unoptimized={true}
                     src={data.thumbImage}
                     alt={data.fullName}
-                    height={150}
-                    width={150}
+                    height={100}
+                    width={100}
                     layout="responsive"
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                      shimmer(150, 150)
+                      shimmer(110, 110)
                     )}`}
                   />
                 </div>
@@ -70,7 +70,8 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
                     strings={[
                       data.fullName,
                       "Full-stack Developer",
-                      "Web Designer",
+                      "Software Engineer",
+                      "Solution Architect",
                     ]}
                     className="text-primary"
                   />

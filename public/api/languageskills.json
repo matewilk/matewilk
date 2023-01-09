@@ -1,42 +1,42 @@
 [
-    {
-        "id": 1,
-        "title": "Javascript",
-        "percentage": 85
-    },
-    {
-        "id": 2,
-        "title": "Node Js",
-        "percentage": 90
-    },
-    {
-        "id": 3,
-        "title": "React Js",
-        "percentage": 80
-    },
-    {
-        "id": 4,
-        "title": "React Native",
-        "percentage": 70
-    },
-    {
-        "id": 5,
-        "title": "Html & Css",
-        "percentage": 95
-    },
-    {
-        "id": 6,
-        "title": "Photoshop",
-        "percentage": 75
-    },
-    {
-        "id": 7,
-        "title": "Illustrator",
-        "percentage": 70
-    },
-    {
-        "id": 8,
-        "title": "Figma",
-        "percentage": 90
-    }
+  {
+    "id": 1,
+    "title": "Javascript",
+    "percentage": 100
+  },
+  {
+    "id": 2,
+    "title": "Node Js",
+    "percentage": 100
+  },
+  {
+    "id": 3,
+    "title": "React Js",
+    "percentage": 100
+  },
+  {
+    "id": 4,
+    "title": "Next Js",
+    "percentage": 100
+  },
+  {
+    "id": 5,
+    "title": "Html & Css",
+    "percentage": 100
+  },
+  {
+    "id": 6,
+    "title": "AWS",
+    "percentage": 100
+  },
+  {
+    "id": 7,
+    "title": "CI/CD",
+    "percentage": 100
+  },
+  {
+    "id": 8,
+    "title": "Agile",
+    "percentage": 100
+  }
 ]

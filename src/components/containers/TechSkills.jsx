@@ -10,7 +10,7 @@ const TechSkills = () => {
   if (!data) return null;
 
   return (
-    <div className="grid grid-cols-4 gap-7">
+    <div className="grid grid-cols-3 gap-7">
       {data?.map((skill, index) => (
         <motion.div
           initial="hidden"
@@ -18,7 +18,7 @@ const TechSkills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 * index }}
           variants={childrenAnimation}
-          className="col-span-4 sm:col-span-2 lg:col-span-1"
+          className="col-span-3 lg:col-span-1"
           key={skill.id}
         >
           <ProgressCircle skill={skill} />
