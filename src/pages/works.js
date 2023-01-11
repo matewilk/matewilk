@@ -7,7 +7,7 @@ const works = () => {
   return (
     <Layout2>
       <Head>
-        <title>Portfolios - Bieber - React Personal Portfolio Template</title>
+        <title>Portfolios - Mat Wilk - Software Engineer</title>
       </Head>
 
       {/* Start Portfolios Section */}

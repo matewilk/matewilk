@@ -1,30 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
+import { RiExternalLinkLine } from "react-icons/ri";
+
 import { createSlug } from "../../lib";
 import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 
-const Blog = ({ post: { title, date, thumb, category, slug } }) => {
+const Blog = ({
+  post: { title, date, thumb, category, slug, link = null },
+}) => {
   return (
-    <article className="blog card p-4 md:p-5">
-      <div className="blog-top relative mb-4">
-        <Link href={`/postdetails/${slug}`}>
-          <a className="fiximage hover-scale block" title={title}>
-            <Image
-              loader={imageLoader}
-              unoptimized={true}
-              src={thumb}
-              height={240}
-              width={400}
-              alt="Blog Image"
-              layout="responsive"
-              objectFit="cover"
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(400, 240)
-              )}`}
-            />
-          </a>
-        </Link>
+    <article className="blog card group p-4 md:p-5">
+      <div className="blog-top relative mb-4 overflow-hidden">
+        <div className="blog-image fiximage blur-0 filter transition-all duration-500 group-hover:blur">
+          <Image
+            loader={imageLoader}
+            unoptimized={true}
+            src={thumb}
+            height={240}
+            width={400}
+            alt={title}
+            layout="responsive"
+            // objectFit="cover"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(400, 240)
+            )}`}
+          />
+        </div>
+        <div className="blog-hovercontent absolute left-0 top-0 z-20 flex h-[101%] w-full -translate-x-full transform items-center justify-center overflow-hidden bg-grey bg-opacity-80 transition-all duration-500 group-hover:translate-x-0">
+          {link ? (
+            <Link href={link}>
+              <a
+                target="_blank"
+                className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
+              >
+                <RiExternalLinkLine />
+              </a>
+            </Link>
+          ) : null}
+        </div>
         <div className="blog-date absolute left-auto right-5 top-5 inline-block min-h-[60px] min-w-[60px] rounded bg-primary p-2 text-center text-grey">
           <span className="month block text-sm uppercase leading-none">
             {new Date(date).toLocaleDateString("en-us", {
@@ -44,9 +58,10 @@ const Blog = ({ post: { title, date, thumb, category, slug } }) => {
         </div>
       </div>
       <h5 className="mb-0">
-        <Link href={`/postdetails/${slug}`}>
+        <Link href={link ? link : `/postdetails/${slug}`}>
           <a
-            className=" block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
+            target="_blank"
+            className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
             title={title}
           >
             {title}

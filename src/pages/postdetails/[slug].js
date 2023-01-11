@@ -11,12 +11,12 @@ import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 import { Breadcrumb } from "../../components/elements";
 import { Layout } from "../../components/layout";
 import { Spinner } from "../../components/utils";
-import Comments from "../../components/utils/Comments";
+// import Comments from "../../components/utils/Comments";
 
 const PostPage = ({ title, date, cover, category, content }) => {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
-  const { slug } = router.query;
+  // const { slug } = router.query;
 
   useEffect(() => {
     setMounted(true);
@@ -32,7 +32,7 @@ const PostPage = ({ title, date, cover, category, content }) => {
   return (
     <Layout>
       <Head>
-        <title>{title} - Bieber - React Personal Portfolio Template</title>
+        <title>{title} - Mat Wilk - Software Engineer</title>
       </Head>
       <Breadcrumb
         title={title}
@@ -104,9 +104,9 @@ const PostPage = ({ title, date, cover, category, content }) => {
             className="post-body mt-4"
             dangerouslySetInnerHTML={{ __html: marked(content) }}
           ></div>
-          <div className="post-comments mt-8">
+          {/* <div className="post-comments mt-8">
             <Comments title={title} slug={slug} />
-          </div>
+          </div> */}
         </div>
       </div>
     </Layout>
