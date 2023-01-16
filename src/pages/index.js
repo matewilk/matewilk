@@ -140,7 +140,7 @@ const Homepage2 = ({ posts }) => {
         <div className="container mx-auto">
           <SectionHeading
             animated={false}
-            title="Contact Us"
+            title="Contact"
             watermark="Contact"
           />
           <ContactSection />

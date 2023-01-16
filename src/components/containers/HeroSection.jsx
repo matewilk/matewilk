@@ -71,7 +71,7 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
                       data.fullName,
                       "Full-stack Developer",
                       "Software Engineer",
-                      "Solution Architect",
+                      "Solutions Architect",
                     ]}
                     className="text-primary"
                   />
