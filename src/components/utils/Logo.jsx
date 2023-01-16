@@ -5,7 +5,7 @@ const Logo = ({ url = "/", text = false }) => {
     <Link href={url}>
       <a className="sitelogo py-2">
         {text ? (
-          <span className="text-4xl font-bold uppercase leading-none text-primary">
+          <span className="text-3xl font-bold uppercase leading-none text-primary xl:text-4xl">
             {text}
             <span className="text-white">.</span>
           </span>
