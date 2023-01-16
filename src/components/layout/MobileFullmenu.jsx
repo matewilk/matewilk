@@ -49,12 +49,12 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/works">
+              <Link href="/projects">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
                 >
-                  Works
+                  Projects
                   <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
                 </a>
               </Link>

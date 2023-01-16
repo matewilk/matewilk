@@ -15,7 +15,7 @@ import { Layout } from "../components/layout";
 import { SectionHeading } from "../components/utils";
 import { getPostsByPage } from "../lib/blogging";
 
-const Homepage2 = ({ posts }) => {
+const Home = ({ posts }) => {
   return (
     <Layout blurred>
       <Head>
@@ -94,7 +94,11 @@ const Homepage2 = ({ posts }) => {
         className="portfolios-section pt-24 lg:pt-28 xl:pt-32"
       >
         <div className="container mx-auto">
-          <SectionHeading animated={false} title="My Works" watermark="Works" />
+          <SectionHeading
+            animated={false}
+            title="My Projects"
+            watermark="Projects"
+          />
           <PortfoliosSection />
         </div>
       </Section>
@@ -153,10 +157,10 @@ const Homepage2 = ({ posts }) => {
   );
 };
 
-export default Homepage2;
+export default Home;
 
 export function getStaticProps() {
-  const { posts } = getPostsByPage();
+  const { posts } = getPostsByPage({ page: 1, limit: 5, urlPath: "blogs" });
 
   return {
     props: {

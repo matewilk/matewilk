@@ -45,7 +45,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
             link: "/",
           },
           {
-            name: "Projects",
+            name: "Blogs",
             link: "",
           },
         ]}
@@ -169,7 +169,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
 export default Posts;
 
 export function getStaticPaths() {
-  const paths = getPagesPath();
+  const paths = getPagesPath("blogs");
 
   return {
     paths,
@@ -178,9 +178,12 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params: { slug } }) {
-  const { posts, hasMore } = getPostsByPage({ page: parseInt(slug) });
-  const categories = getAllCategories();
-  const recentPosts = getRecentPosts();
+  const { posts, hasMore } = getPostsByPage({
+    page: parseInt(slug),
+    urlPath: "blogs",
+  });
+  const categories = getAllCategories("blogs");
+  const recentPosts = getRecentPosts("blogs");
 
   return {
     props: {

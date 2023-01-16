@@ -82,7 +82,7 @@ const Navigation = () => {
           {checkroute ? (
             <Link href="/">
               <a className="group relative inline-block cursor-pointer py-6 text-sm font-medium uppercase tracking-wider text-heading before:text-primary">
-                Works
+                Projects
                 <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </a>
             </Link>
@@ -96,7 +96,7 @@ const Navigation = () => {
               duration={1000}
               className="group relative inline-block cursor-pointer py-6 text-sm font-medium uppercase tracking-wider text-heading before:text-primary"
             >
-              Works
+              Projects
               <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
             </ScrollLink>
           )}

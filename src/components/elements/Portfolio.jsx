@@ -7,7 +7,15 @@ import { Portal } from "react-portal";
 import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 
 const Portfolio = ({
-  portfolio: { title, subtitle, coverimage, imagegallery, videogallery, url },
+  portfolio: {
+    title,
+    subtitle,
+    coverimage,
+    imagegallery,
+    videogallery,
+    url,
+    slug,
+  },
 }) => {
   const [videoGalleryOpen, setVideoGalleryOpen] = useState(false);
   const [imageGalleryOpen, setImageGalleryOpen] = useState(false);
@@ -48,7 +56,7 @@ const Portfolio = ({
             </button>
           ) : null}
           {url ? (
-            <Link href={url}>
+            <Link href={slug ? `/postdetails/${slug}` : url}>
               <a
                 target="_blank"
                 className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
@@ -60,7 +68,17 @@ const Portfolio = ({
         </div>
       </div>
       <div className="portfolio-content mt-4">
-        <h5 className="mb-0">{title}</h5>
+        <h5 className="mb-0">
+          <Link href={slug ? `/postdetails/${slug}` : url ? url : ""}>
+            <a
+              target="_blank"
+              className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
+              title={title}
+            >
+              {title}
+            </a>
+          </Link>
+        </h5>
         <p>{subtitle}</p>
       </div>
       {imagegallery && (

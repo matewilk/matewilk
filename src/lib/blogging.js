@@ -6,24 +6,24 @@ import { createSlug, filterPostsByPage, sortPostByDate } from ".";
 const LIMIT = 6;
 
 // Get all post
-const getAllPosts = () => {
-  return fs.readdirSync(path.join(process.cwd(), "src/posts"));
+const getAllPosts = (urlPath) => {
+  return fs.readdirSync(path.join(process.cwd(), `src/${urlPath}`));
 };
 
 // get all posts slug
-const getAllPostsSlug = () => {
-  const files = getAllPosts();
+const getAllPostsSlug = (urlPath) => {
+  const files = getAllPosts(urlPath);
   return files.map((filename) => filename.replace(/\.(md|mdx)$/, ""));
 };
 
 // Get all posts data
-const getAllPostsData = () => {
-  const files = getAllPosts();
+const getAllPostsData = (urlPath) => {
+  const files = getAllPosts(urlPath);
   const posts = files.map((filename) => {
     const slug = filename.replace(/\.(md|mdx)$/, "");
 
     const markdownWithMeta = fs.readFileSync(
-      path.join(process.cwd(), "src/posts", filename),
+      path.join(process.cwd(), `src/${urlPath}`, filename),
       "utf-8"
     );
 
@@ -38,8 +38,8 @@ const getAllPostsData = () => {
 };
 
 // Get posts by page
-const getPostsByPage = (page = 1, limit = 6) => {
-  const tempPosts = getAllPostsData();
+const getPostsByPage = ({ page = 1, limit = 6, urlPath = "posts" }) => {
+  const tempPosts = getAllPostsData(urlPath);
   const posts = filterPostsByPage(tempPosts, page, limit);
   return {
     posts,
@@ -48,8 +48,8 @@ const getPostsByPage = (page = 1, limit = 6) => {
 };
 
 // Get Page Paths
-const getPagesPath = () => {
-  const files = getAllPosts();
+const getPagesPath = (urlPath = "posts") => {
+  const files = getAllPosts(urlPath);
   const pages = Math.ceil(files.length / LIMIT);
 
   let paths = [];
@@ -64,8 +64,8 @@ const getPagesPath = () => {
 };
 
 // Get all posts path (for nextjs getStaticPaths)
-const getPostsPath = () => {
-  const postsSlug = getAllPostsSlug();
+const getPostsPath = (urlPath = "posts") => {
+  const postsSlug = getAllPostsSlug(urlPath);
 
   const paths = postsSlug.map((slug) => {
     return {
@@ -92,8 +92,8 @@ const getSinglePost = (slug) => {
 };
 
 // Get all Categories
-const getAllCategories = () => {
-  const posts = getAllPostsData();
+const getAllCategories = (urlPath = "posts") => {
+  const posts = getAllPostsData(urlPath);
 
   const categories = posts.map((post) => post.category);
 
@@ -145,8 +145,8 @@ const getPostsByCategory = (category, page = 1, limit = 6) => {
 };
 
 // Get recent posts
-const getRecentPosts = () => {
-  const allPosts = getAllPostsData();
+const getRecentPosts = (urlPath = "posts") => {
+  const allPosts = getAllPostsData(urlPath);
 
   return allPosts.slice(0, 5);
 };

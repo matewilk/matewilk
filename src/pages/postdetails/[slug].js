@@ -42,7 +42,7 @@ const PostPage = ({ title, date, cover, category, content }) => {
             link: "/",
           },
           {
-            name: "Blogs",
+            name: "Projects",
             link: "/posts/1",
           },
           {
