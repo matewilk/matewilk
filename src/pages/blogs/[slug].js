@@ -103,7 +103,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/category/${createSlug(category)}/1`}>
+                        <Link href={`/blogcategory/${createSlug(category)}/1`}>
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">

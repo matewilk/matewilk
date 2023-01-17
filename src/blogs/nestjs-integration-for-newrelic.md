@@ -1,7 +1,7 @@
 ---
 title: "NestJS integration for New Relic One"
 date: "2022-03-07"
-category: ["JavaScript", "NestJs", "New Relic"]
+category: ["JavaScript", "NestJs", "NewRelic"]
 cover: "/images/blog/blog-image-7.jpg"
 thumb: "/images/blog/sm/blog-nestjs.png"
 link: "https://newrelic.com/blog/how-to-relic/new-relic-nestjs"

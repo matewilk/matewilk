@@ -45,8 +45,8 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
             link: "/",
           },
           {
-            name: "Blogs",
-            link: "/blogs/1",
+            name: "Projects",
+            link: "/posts/1",
           },
           {
             name: slug,
@@ -76,7 +76,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
               <div className="flex gap-3 pt-10 text-center">
                 {pageNumber !== "1" && (
                   <Link
-                    href={`/category/${slug}/${String(
+                    href={`/postcategory/${slug}/${String(
                       parseInt(pageNumber) - 1
                     )}`}
                   >
@@ -87,7 +87,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
                 )}
                 {hasMore && (
                   <Link
-                    href={`/category/${slug}/${String(
+                    href={`/postcategory/${slug}/${String(
                       parseInt(pageNumber) + 1
                     )}`}
                   >
@@ -114,7 +114,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/category/${createSlug(category)}/1`}>
+                        <Link href={`/postcategory/${createSlug(category)}/1`}>
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">
@@ -189,7 +189,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
 export default CategoryPosts;
 
 export function getStaticPaths() {
-  const paths = getCategoryPaths("blogs");
+  const paths = getCategoryPaths("posts");
 
   return {
     paths,
@@ -199,13 +199,13 @@ export function getStaticPaths() {
 
 export function getStaticProps({ params: { slug, page } }) {
   const { posts, hasMore } = getPostsByCategory({
-    urlPath: "blogs",
+    urlPath: "posts",
     category: slug,
     page,
     limit: 6,
   });
-  const categories = getAllCategories("blogs");
-  const recentPosts = getRecentPosts("blogs");
+  const categories = getAllCategories("posts");
+  const recentPosts = getRecentPosts("posts");
 
   return {
     props: {
