@@ -20,6 +20,15 @@ const TechSkills = () => {
           variants={childrenAnimation}
           className="col-span-3 lg:col-span-1"
           key={skill.id}
+          whileHover={{
+            scale: 1.1,
+            transition: {
+              type: "spring",
+              stiffness: 400,
+              damping: 10,
+              // delay: 0.2 * index,
+            },
+          }}
         >
           <ProgressCircle skill={skill} />
         </motion.div>

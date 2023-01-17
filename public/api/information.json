@@ -5,7 +5,8 @@
   "thumbImage": "/images/formal-image.png",
   "largeImage": "/images/about-image.png",
   "bio": "Experienced full stack developer with a background in various technologies and a focus on creating high-quality software. Proficient in front-end and back-end development, as well as testing, debugging, and deployment. Strong communication skills and a passion for problem-solving.",
-  "languages": ["English", "Polish", "Spanish", "Russian"],
+  "languages": [],
+  "experience": "2007",
   "location": "London, United Kingdom",
   "freelance": "Available",
   "socialAddress": {

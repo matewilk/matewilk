@@ -95,6 +95,17 @@ const AboutSection = () => {
                 : {data.languages.join(", ")}
               </li>
             ) : null}
+            {data.experience.length ? (
+              <li className="text-lg">
+                <strong className="inline-block min-w-[120px] font-medium">
+                  Experience{" "}
+                </strong>
+                :{" "}
+                {new Date().getFullYear() -
+                  new Date(data.experience).getFullYear()}
+                + years
+              </li>
+            ) : null}
             {data.location && (
               <li className="text-lg">
                 <strong className="inline-block min-w-[120px] font-medium">
