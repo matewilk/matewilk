@@ -1,12 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { RiExternalLinkLine } from "react-icons/ri";
+import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
 
 import { createSlug } from "../../lib";
 import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 
 const Blog = ({
-  post: { title, date, thumb, category, slug, link = null },
+  post: {
+    title,
+    date,
+    thumb,
+    category,
+    slug,
+    link = null,
+    imagegallery = [],
+    videogallery = [],
+  },
 }) => {
   return (
     <article className="blog card group p-4 md:p-5">
@@ -28,6 +37,22 @@ const Blog = ({
           />
         </div>
         <div className="blog-hovercontent absolute left-0 top-0 z-20 flex h-[101%] w-full -translate-x-full transform items-center justify-center overflow-hidden bg-grey bg-opacity-80 transition-all duration-500 group-hover:translate-x-0">
+          {imagegallery.length ? (
+            <button
+              className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
+              onClick={() => setImageGalleryOpen(true)}
+            >
+              <RiImageLine />
+            </button>
+          ) : null}
+          {videogallery.length ? (
+            <button
+              className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
+              onClick={() => setVideoGalleryOpen(true)}
+            >
+              <RiVideoLine />
+            </button>
+          ) : null}
           {link ? (
             <Link href={link}>
               <a
@@ -71,7 +96,7 @@ const Blog = ({
       <div className="flex list-none gap-1.5 text-sm">
         {category.map((cat, i) => (
           <span key={i} className="after:content-[','] last:after:hidden">
-            <Link href={`/category/${createSlug(cat)}/1`}>
+            <Link href={`/blogcategory/${createSlug(cat)}/1`}>
               <a className=" hover:text-primary">{cat}</a>
             </Link>
           </span>

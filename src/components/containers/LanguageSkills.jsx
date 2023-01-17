@@ -16,6 +16,16 @@ const LanguageSkills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          whileHover={{
+            scale: 1.05,
+            transition: {
+              type: "spring",
+              stiffness: 400,
+              damping: 10,
+              delay: 0,
+              duration: 1,
+            },
+          }}
           transition={{ duration: 0.4, delay: 0.2 * index }}
           variants={childrenAnimation}
           className="col-span-2 md:col-span-1"

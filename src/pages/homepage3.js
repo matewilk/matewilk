@@ -134,7 +134,7 @@ export default Homepage1;
 
 export async function getStaticProps() {
   // const queryClient = new QueryClient();
-  const { posts } = getPostsByPage();
+  const { posts } = getPostsByPage({ page: 1 });
 
   // await queryClient.prefetchQuery('services', getServices)
 

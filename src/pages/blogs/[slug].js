@@ -1,23 +1,25 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import { Blog, Breadcrumb } from "../../../components/elements";
+import { useEffect, useState } from "react";
+import { Blog, Breadcrumb } from "../../components/elements";
+import { createSlug } from "../../lib";
 import {
   getAllCategories,
-  getCategoryPaths,
-  getPostsByCategory,
+  getPagesPath,
+  getPostsByPage,
   getRecentPosts,
-} from "../../../lib/blogging";
-import { childrenAnimation } from "../../../lib/motion";
-import { createSlug } from "../../../lib";
-import { Layout } from "../../../components/layout";
+} from "../../lib/blogging";
+import { childrenAnimation } from "../../lib/motion";
+import { Layout } from "../../components/layout";
 
-const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
+const Posts = ({ posts, hasMore, categories, recentPosts }) => {
   const [mounted, setMounted] = useState(false);
   const [uniqueCategories, setUniqueCategories] = useState([]);
+
   const router = useRouter();
+  const { slug: page } = router.query;
 
   useEffect(() => {
     setMounted(true);
@@ -27,18 +29,16 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
     setUniqueCategories([...new Set(categories)]);
   }, [categories]);
 
-  const { page: pageNumber, slug } = router.query;
-
   if (!mounted) return <p className="text-center">Loading...</p>;
   if (!posts) return null;
 
   return (
     <Layout>
       <Head>
-        <title>Blogs - Bieber - React Personal Portfolio Template</title>
+        <title>matewilk - software engineer</title>
       </Head>
       <Breadcrumb
-        title={slug}
+        title="Blogs"
         paths={[
           {
             name: "Home",
@@ -46,10 +46,6 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
           },
           {
             name: "Blogs",
-            link: "/posts/1",
-          },
-          {
-            name: slug,
             link: "",
           },
         ]}
@@ -59,38 +55,31 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
             <div className="col-span-1 lg:col-span-9">
               <div className="grid grid-cols-2 gap-7">
-                {posts?.map((post, index) => (
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 * index }}
-                    variants={childrenAnimation}
-                    className="col-span-2 md:col-span-1"
-                    key={index}
-                  >
-                    <Blog post={post} />
-                  </motion.div>
-                ))}
+                {posts &&
+                  posts?.map((post, index) => (
+                    <motion.div
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 * index }}
+                      variants={childrenAnimation}
+                      className="col-span-2 sm:col-span-1"
+                      key={index}
+                    >
+                      <Blog post={post} />
+                    </motion.div>
+                  ))}
               </div>
               <div className="flex gap-3 pt-10 text-center">
-                {pageNumber !== "1" && (
-                  <Link
-                    href={`/category/${slug}/${String(
-                      parseInt(pageNumber) - 1
-                    )}`}
-                  >
+                {page !== "1" && (
+                  <Link href={`/posts/${String(parseInt(page) - 1)}`}>
                     <a className="btn btn-small">
                       <span>Prev</span>
                     </a>
                   </Link>
                 )}
                 {hasMore && (
-                  <Link
-                    href={`/category/${slug}/${String(
-                      parseInt(pageNumber) + 1
-                    )}`}
-                  >
+                  <Link href={`/posts/${String(parseInt(page) + 1)}`}>
                     <a className="btn btn-small">
                       <span>Next</span>
                     </a>
@@ -114,7 +103,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/category/${createSlug(category)}/1`}>
+                        <Link href={`/blogcategory/${createSlug(category)}/1`}>
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">
@@ -177,10 +166,10 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
   );
 };
 
-export default CategoryPosts;
+export default Posts;
 
 export function getStaticPaths() {
-  const paths = getCategoryPaths();
+  const paths = getPagesPath("blogs");
 
   return {
     paths,
@@ -188,10 +177,13 @@ export function getStaticPaths() {
   };
 }
 
-export function getStaticProps({ params: { slug, page } }) {
-  const { posts, hasMore } = getPostsByCategory(slug, page, 6);
-  const categories = getAllCategories();
-  const recentPosts = getRecentPosts();
+export function getStaticProps({ params: { slug } }) {
+  const { posts, hasMore } = getPostsByPage({
+    page: parseInt(slug),
+    urlPath: "blogs",
+  });
+  const categories = getAllCategories("blogs");
+  const recentPosts = getRecentPosts("blogs");
 
   return {
     props: {
