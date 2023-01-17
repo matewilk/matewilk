@@ -131,7 +131,7 @@ const MobileNavigation = ({ changeState }) => {
             )}
           </li>
           <li className="block">
-            <Link href="/posts/1">
+            <Link href="/blogs/1">
               <a
                 className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                 onClick={() => handleClick()}

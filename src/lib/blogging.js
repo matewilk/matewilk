@@ -101,9 +101,9 @@ const getAllCategories = (urlPath = "posts") => {
 };
 
 // Get category paths (for nextjs getStaticPaths)
-const getCategoryPaths = () => {
-  const allPosts = getAllPostsData();
-  const allCategories = getAllCategories();
+const getCategoryPaths = (urlPath = "posts") => {
+  const allPosts = getAllPostsData(urlPath);
+  const allCategories = getAllCategories(urlPath);
   const categories = [...new Set(allCategories)];
   const paths = categories.map((category) => {
     const filteredPosts = allPosts.filter((post) => {
@@ -128,8 +128,13 @@ const getCategoryPaths = () => {
 };
 
 // Get all posts by category
-const getPostsByCategory = (category, page = 1, limit = 6) => {
-  const allPosts = getAllPostsData();
+const getPostsByCategory = ({
+  urlPath = "blogs",
+  category,
+  page = 1,
+  limit = 6,
+}) => {
+  const allPosts = getAllPostsData(urlPath);
 
   const filteredPosts = allPosts.filter((post) => {
     const temp = post.category.map((cat) => createSlug(cat));

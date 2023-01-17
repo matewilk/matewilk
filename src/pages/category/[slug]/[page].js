@@ -35,7 +35,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
   return (
     <Layout>
       <Head>
-        <title>Blogs - Bieber - React Personal Portfolio Template</title>
+        <title>matewilk - software engineer</title>
       </Head>
       <Breadcrumb
         title={slug}
@@ -46,7 +46,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
           },
           {
             name: "Blogs",
-            link: "/posts/1",
+            link: "/blogs/1",
           },
           {
             name: slug,
@@ -146,8 +146,17 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
                     {recentPosts.map((post, index) => (
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
-                          <Link href={`/postdetails/${post.slug}`}>
-                            <a className="text-heading no-underline hover:text-primary hover:underline">
+                          <Link
+                            href={
+                              post.link
+                                ? post.link
+                                : `/postdetails/${post.slug}`
+                            }
+                          >
+                            <a
+                              target="_blank"
+                              className="text-heading no-underline hover:text-primary hover:underline"
+                            >
                               {post.title}{" "}
                             </a>
                           </Link>
@@ -180,7 +189,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
 export default CategoryPosts;
 
 export function getStaticPaths() {
-  const paths = getCategoryPaths();
+  const paths = getCategoryPaths("blogs");
 
   return {
     paths,
@@ -189,9 +198,14 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params: { slug, page } }) {
-  const { posts, hasMore } = getPostsByCategory(slug, page, 6);
-  const categories = getAllCategories();
-  const recentPosts = getRecentPosts();
+  const { posts, hasMore } = getPostsByCategory({
+    urlPath: "blogs",
+    category: slug,
+    page,
+    limit: 6,
+  });
+  const categories = getAllCategories("blogs");
+  const recentPosts = getRecentPosts("blogs");
 
   return {
     props: {
