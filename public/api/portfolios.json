@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Candle",
-    "subtitle": "Creative Candle Light",
+    "title": "Web3 Wallet",
+    "subtitle": "Transact on Ethereum blockchain",
     "coverimage": "/images/portfolios/portfolio-image-19.jpg",
     "imagegallery": [
       "/images/portfolios/portfolio-image-lg-19.jpg",
@@ -11,170 +11,67 @@
     ],
     "videogallery": false,
     "url": "https://dribbble.com",
-    "filters": ["react"],
-    "slug": "abc"
+    "filters": ["react", "web3", "javascript"],
+    "slug": "web3"
   },
   {
     "id": 2,
-    "title": "Paint",
-    "subtitle": "Creative wall painting",
+    "title": "Web Chat",
+    "subtitle": "Websocket based live chat",
     "coverimage": "/images/portfolios/portfolio-image-2.jpg",
     "imagegallery": false,
     "videogallery": false,
     "url": "https://dribbble.com",
-    "filters": ["uiux"]
+    "filters": ["javascript", "websocket", "graphql", "nodejs"]
   },
   {
     "id": 3,
-    "title": "UI/UX Sample",
-    "subtitle": "UI/UX Sample design mockup",
+    "title": "IoC",
+    "subtitle": "Inversion of Control container",
     "coverimage": "/images/portfolios/portfolio-image-3.jpg",
     "imagegallery": false,
     "videogallery": ["https://www.youtube.com/watch?v=HHBsvKnCkwI"],
     "url": "https://dribbble.com",
-    "filters": ["html", "react"]
+    "filters": ["javascript", "nodejs", "IoC"]
   },
   {
     "id": 4,
-    "title": "Packet",
-    "subtitle": "Packet design mockup",
+    "title": "Snowflake Integration",
+    "subtitle": "New Relic Snowflake Integration",
     "coverimage": "/images/portfolios/portfolio-image-4.jpg",
     "imagegallery": ["/images/portfolios/portfolio-image-lg-4.jpg"],
     "videogallery": false,
     "url": "https://dribbble.com",
-    "filters": ["uiux", "node"]
+    "filters": ["javascript", "bash", "CI/CD"]
   },
   {
     "id": 5,
-    "title": "Packet",
+    "title": "Next.js Integration",
     "subtitle": "Another packet design mockup",
     "coverimage": "/images/portfolios/portfolio-image-5.jpg",
     "imagegallery": ["/images/portfolios/portfolio-image-lg-5.jpg"],
     "videogallery": ["https://www.youtube.com/watch?v=HHBsvKnCkwI"],
     "url": "https://dribbble.com",
-    "filters": ["uiux", "html"]
+    "filters": ["javascript", "nextjs", "nodejs", "react"]
   },
   {
     "id": 6,
-    "title": "Cream",
-    "subtitle": "Creative cream box design",
+    "title": "Social Sentiment Analysis",
+    "subtitle": "Twitter Sentiment Analysis Service",
     "coverimage": "/images/portfolios/portfolio-image-6.jpg",
     "imagegallery": false,
     "videogallery": false,
     "url": "https://dribbble.com",
-    "filters": ["html", "node"]
+    "filters": ["javascript", "nodejs", "IoC"]
   },
   {
     "id": 7,
-    "title": "NFT",
-    "subtitle": "Creative NFT Design",
+    "title": "Observability Map",
+    "subtitle": "Events displaying map",
     "coverimage": "/images/portfolios/portfolio-image-7.jpg",
     "imagegallery": false,
     "videogallery": false,
     "url": "https://dribbble.com",
-    "filters": ["react", "uiux"]
-  },
-  {
-    "id": 8,
-    "title": "Atar",
-    "subtitle": "Atar box design",
-    "coverimage": "/images/portfolios/portfolio-image-8.jpg",
-    "imagegallery": ["/images/portfolios/portfolio-image-lg-8.jpg"],
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["uiux"]
-  },
-  {
-    "id": 9,
-    "title": "Cream",
-    "subtitle": "Another cream box design",
-    "coverimage": "/images/portfolios/portfolio-image-9.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["html", "react"]
-  },
-  {
-    "id": 10,
-    "title": "Hair Gel",
-    "subtitle": "Hair gel box design",
-    "coverimage": "/images/portfolios/portfolio-image-10.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["uiux", "node"]
-  },
-  {
-    "id": 11,
-    "title": "Hair Gel",
-    "subtitle": "Hair gel tube design",
-    "coverimage": "/images/portfolios/portfolio-image-11.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["uiux", "html"]
-  },
-  {
-    "id": 12,
-    "title": "NFT",
-    "subtitle": "Creative NFT Text",
-    "coverimage": "/images/portfolios/portfolio-image-12.jpg",
-    "imagegallery": [
-      "/images/portfolios/portfolio-image-lg-12.jpg",
-      "/images/portfolios/portfolio-image-lg-11.jpg"
-    ],
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["html", "node"]
-  },
-  {
-    "id": 13,
-    "title": "Wallpaper",
-    "subtitle": "Creative wallpaper design",
-    "coverimage": "/images/portfolios/portfolio-image-13.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["react", "uiux"]
-  },
-  {
-    "id": 14,
-    "title": "Wallpaper",
-    "subtitle": "Creative desktop wallpaper",
-    "coverimage": "/images/portfolios/portfolio-image-14.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["uiux"]
-  },
-  {
-    "id": 15,
-    "title": "NFT",
-    "subtitle": "Creative NFT Design",
-    "coverimage": "/images/portfolios/portfolio-image-15.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": "https://dribbble.com",
-    "filters": ["html", "react"]
-  },
-  {
-    "id": 16,
-    "title": "Art",
-    "subtitle": "Creative wall art",
-    "coverimage": "/images/portfolios/portfolio-image-16.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": false,
-    "filters": ["uiux", "node"]
-  },
-  {
-    "id": 17,
-    "title": "Wallpaper2",
-    "subtitle": "Creative wallpaper art",
-    "coverimage": "/images/portfolios/portfolio-image-1.jpg",
-    "imagegallery": false,
-    "videogallery": false,
-    "url": false,
-    "filters": ["uiux"]
+    "filters": ["javascript", "react", "nodejs"]
   }
 ]
