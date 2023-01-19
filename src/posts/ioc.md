@@ -3,7 +3,7 @@ title: "Inversion of Control container"
 date: "2020-03-03"
 category: ["JavaScript", "Node.js", "IoC"]
 cover: "/images/blog/blog-image-7.jpg"
-thumb: "/images/blog/sm/blog-nestjs.png"
+thumb: "/images/blog/sm/ioc-thumb.png"
 ---
 
 ## Inversion of Control container implementation

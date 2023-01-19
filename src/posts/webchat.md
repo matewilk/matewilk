@@ -3,7 +3,7 @@ title: "Web Chat"
 date: "2022-03-07"
 category: ["JavaScript", "WebSocket", "React", "Node.js", "GraphQL"]
 cover: "/images/blog/blog-image-7.jpg"
-thumb: "/images/blog/sm/blog-nestjs.png"
+thumb: "/images/blog/sm/webchat-thumb.png"
 ---
 
 ## Web Chat

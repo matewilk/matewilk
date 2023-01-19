@@ -2,8 +2,8 @@
 title: "Web3 Wallet"
 date: "2022-03-07"
 category: ["JavaScript", "Web3", "React"]
-cover: "/images/blog/blog-image-7.jpg"
-thumb: "/images/blog/sm/blog-nestjs.png"
+cover: "/images/blog/web3-wallet-cover.png"
+thumb: "/images/blog/sm/web3-wallet-thumb.png"
 ---
 
 ## Web3 Wallet

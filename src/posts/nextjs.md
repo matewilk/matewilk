@@ -3,7 +3,7 @@ title: "Next.js Integration"
 date: "2022-03-07"
 category: ["JavaScript", "React", "Node.js", "Next.js"]
 cover: "/images/blog/blog-image-7.jpg"
-thumb: "/images/blog/sm/blog-nestjs.png"
+thumb: "/images/blog/sm/nextjs-thumb.png"
 ---
 
 ## New Relic Next.js integration
