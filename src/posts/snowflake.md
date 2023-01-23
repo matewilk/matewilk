@@ -1,6 +1,6 @@
 ---
 title: "Snowflake Integration"
-date: "2022-03-07"
+date: "2020-12-17"
 category: ["JavaScript", "WebSocket", "React", "Node.js", "GraphQL"]
 cover: "/images/blog/blog-image-7.jpg"
 thumb: "/images/blog/sm/snowflake-thumb.png"
