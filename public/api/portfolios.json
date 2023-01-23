@@ -71,7 +71,7 @@
   },
   {
     "id": 7,
-    "title": "Observability Map",
+    "title": "ATMs Observability Map",
     "subtitle": "Events displaying map",
     "coverimage": "/images/portfolios/map-coverimage.png",
     "imagegallery": false,
@@ -79,5 +79,16 @@
     "url": "https://dribbble.com",
     "filters": ["javascript", "react", "nodejs"],
     "slug": "map"
+  },
+  {
+    "id": 7,
+    "title": "Spin The Wheel",
+    "subtitle": "Websocket multiplayer game",
+    "coverimage": "/images/portfolios/wheel-coverimage.png",
+    "imagegallery": false,
+    "videogallery": false,
+    "url": "https://dribbble.com",
+    "filters": ["javascript", "react", "nodejs", "websocket", "redux"],
+    "slug": "wheel"
   }
 ]

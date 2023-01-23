@@ -1,6 +1,6 @@
 ---
 title: "Social Sentiment Analysis"
-date: "2022-03-07"
+date: "2021-05-07"
 category: ["JavaScript", "Express", "Node.js", "IoC"]
 cover: "/images/blog/blog-image-7.jpg"
 thumb: "/images/blog/sm/sentiment-thumb.png"

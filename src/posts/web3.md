@@ -1,8 +1,8 @@
 ---
 title: "Web3 Wallet"
-date: "2022-03-07"
+date: "2022-12-13"
 category: ["JavaScript", "Web3", "React"]
-cover: "/images/blog/web3-wallet-cover.png"
+cover: "/images/blog/web3-wallet-cover.jpeg"
 thumb: "/images/blog/sm/web3-wallet-thumb.png"
 ---
 
