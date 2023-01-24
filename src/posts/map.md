@@ -1,7 +1,7 @@
 ---
 title: "ATMs Observability Map"
 date: "2021-12-14"
-category: ["JavaScript", "React", "Node.js"]
+category: ["JavaScript", "React", "Redux"]
 cover: "/images/blog/map-cover.jpeg"
 thumb: "/images/blog/sm/map-thumb.png"
 ---
