@@ -1,22 +1,27 @@
 [
-    {
-        "id": 1,
-        "title": "UI/UX Design",
-        "value": "uiux"
-    },
-    {
-        "id": 2,
-        "title": "Html & Css",
-        "value": "html"
-    },
-    {
-        "id": 3,
-        "title": "React Js",
-        "value": "react"
-    },
-    {
-        "id": 4,
-        "title": "Node Js",
-        "value": "node"
-    }
+  {
+    "id": 1,
+    "title": "JavaScript",
+    "value": "javascript"
+  },
+  {
+    "id": 2,
+    "title": "React Js",
+    "value": "react"
+  },
+  {
+    "id": 3,
+    "title": "Node Js",
+    "value": "nodejs"
+  },
+  {
+    "id": 4,
+    "title": "WebSocket",
+    "value": "websocket"
+  },
+  {
+    "id": 5,
+    "title": "Web3",
+    "value": "web3"
+  }
 ]
