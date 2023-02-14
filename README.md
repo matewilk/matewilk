@@ -13,19 +13,16 @@
 </p>
 
 <div align="center">
-  <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=matewilk&hide_border=true&layout=compact" alt="matewilk" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=matewilk&hide_border=true&layout=compact" alt="matewilk" />
 </div>
 
-<table style="border: 1px pink">
-  <tr>
-    <td valign="top" width="50%">
-      <img src="https://github-readme-stats.vercel.app/api?username=matewilk&show_icons=true&count_private=true&hide_border=true" align="left" style="width: 100%" />
-    </td>
-    <td valign="top" width="50%">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=matewilk&hide_border=true&layout=compact" align="left" style="width: 100%" />
-    </td>
-  </tr>
-</table>  
+<div align="center">
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=matewilk&show_icons=true&count_private=true&hide_border=true" alt="matewilk" />
+</div>
+
+<div align="center">
+  <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=matewilk&hide_border=true&layout=compact" alt="matewilk" />
+</div>
 
 <h4 align="center">Languages and Tools:</h4>
 <div align="center">  
