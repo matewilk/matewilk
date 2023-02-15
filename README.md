@@ -13,15 +13,15 @@
 </p>
 
 <div align="center">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=matewilk&hide_border=true&layout=compact" alt="matewilk" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=matewilk&hide_border=true&layout=compact&show_icons=true&theme=radical" alt="matewilk" />
 </div>
 
 <div align="center">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=matewilk&show_icons=true&count_private=true&hide_border=true" alt="matewilk" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=matewilk&show_icons=true&theme=radical&hide_border=true" alt="matewilk" />
 </div>
 
 <div align="center">
-  <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=matewilk&hide_border=true&layout=compact" alt="matewilk" />
+  <img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=matewilk&hide_border=true&layout=compact&theme=radical" alt="matewilk" />
 </div>
 
 <h4 align="center">Languages and Tools:</h4>
