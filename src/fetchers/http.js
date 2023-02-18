@@ -1,13 +1,15 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL,
-    headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH",
-        "Content-Type": "application/json",
-    },
+  baseURL: process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+    : process.env.NEXT_PUBLIC_API_URL,
+  headers: {
+    Accept: "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH",
+    "Content-Type": "application/json",
+  },
 });
 
 export { http };
