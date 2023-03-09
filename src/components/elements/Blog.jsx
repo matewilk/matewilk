@@ -25,14 +25,14 @@ const Blog = ({
             loader={imageLoader}
             unoptimized={true}
             src={thumb}
-            height={240}
+            height={225}
             width={400}
             alt={title}
             layout="responsive"
             // objectFit="cover"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(400, 240)
+              shimmer(400, 225)
             )}`}
           />
         </div>
