@@ -16,7 +16,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
         <nav className="sidenav-mobilmenu relative max-h-full w-full overflow-y-auto">
           <ul className="mb-0 list-none pl-0">
             <li className="block">
-              <Link href="/homepage1">
+              <Link legacyBehavior href="/homepage1">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -27,7 +27,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/about">
+              <Link legacyBehavior href="/about">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -38,7 +38,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/resume">
+              <Link legacyBehavior href="/resume">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -49,7 +49,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/projects">
+              <Link legacyBehavior href="/projects">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -60,7 +60,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/blogs/1">
+              <Link legacyBehavior href="/blogs/1">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -71,7 +71,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
               </Link>
             </li>
             <li className="block">
-              <Link href="/contact">
+              <Link legacyBehavior href="/contact">
                 <a
                   className="group relative inline-block cursor-pointer overflow-hidden py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
                   onClick={(e) => fullMenuHandler(false)}
@@ -87,7 +87,7 @@ const MobileFullmenu = ({ fullMenuHandler }) => {
           <span className="whitespace-nowrap">
             &copy; {new Date().getFullYear()}{" "}
           </span>
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a className="font-medium text-heading no-underline hover:text-primary">
               NuclearThemes
             </a>

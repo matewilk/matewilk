@@ -1,22 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
+import { useState } from "react";
 
 import { createSlug } from "../../lib";
 import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
+import { BlogPost } from "../../lib/blogging";
 
 const Blog = ({
-  post: {
-    title,
-    date,
-    thumb,
-    category,
-    slug,
-    link = null,
-    imagegallery = [],
-    videogallery = [],
-  },
-}) => {
+  title,
+  date,
+  thumb,
+  category,
+  slug,
+  link = null,
+  imagegallery = [],
+  videogallery = [],
+}: BlogPost) => {
+  const [videoGalleryOpen, setVideoGalleryOpen] = useState(false);
+  const [imageGalleryOpen, setImageGalleryOpen] = useState(false);
+
   return (
     <article className="blog card group p-4 md:p-5">
       <div className="blog-top relative mb-4 overflow-hidden">
@@ -54,7 +57,7 @@ const Blog = ({
             </button>
           ) : null}
           {link ? (
-            <Link href={link}>
+            <Link legacyBehavior href={link}>
               <a
                 target="_blank"
                 className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
@@ -76,14 +79,12 @@ const Blog = ({
             })}
           </span>
           <span className="year block text-sm leading-none">
-            {new Date(date).getFullYear({
-              year: "numeric",
-            })}
+            {new Date(date).getFullYear()}
           </span>
         </div>
       </div>
       <h5 className="mb-0">
-        <Link href={link ? link : `/postdetails/${slug}`}>
+        <Link legacyBehavior href={link ? link : `/postdetails/${slug}`}>
           <a
             target="_blank"
             className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
@@ -96,7 +97,7 @@ const Blog = ({
       <div className="flex list-none gap-1.5 text-sm">
         {category.map((cat, i) => (
           <span key={i} className="after:content-[','] last:after:hidden">
-            <Link href={`/blogcategory/${createSlug(cat)}/1`}>
+            <Link legacyBehavior href={`/blogcategory/${createSlug(cat)}/1`}>
               <a className=" hover:text-primary">{cat}</a>
             </Link>
           </span>

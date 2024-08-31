@@ -1,25 +1,23 @@
-import Head from "next/head";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Blog, Breadcrumb } from "../../components/elements";
-import { createSlug } from "../../lib";
+import { Blog, Breadcrumb } from "../../../components/elements";
 import {
   getAllCategories,
-  getPagesPath,
-  getPostsByPage,
+  getCategoryPaths,
+  getPostsByCategory,
   getRecentPosts,
-} from "../../lib/blogging";
-import { childrenAnimation } from "../../lib/motion";
-import { Layout } from "../../components/layout";
+} from "../../../lib/blogging";
+import { childrenAnimation } from "../../../lib/motion";
+import { createSlug } from "../../../lib";
+import { Layout } from "../../../components/layout";
 
-const Posts = ({ posts, hasMore, categories, recentPosts }) => {
+const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
   const [mounted, setMounted] = useState(false);
   const [uniqueCategories, setUniqueCategories] = useState([]);
-
   const router = useRouter();
-  const { slug: page } = router.query;
 
   useEffect(() => {
     setMounted(true);
@@ -29,16 +27,19 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
     setUniqueCategories([...new Set(categories)]);
   }, [categories]);
 
+  const { page, slug } = router.query;
+  const pageNumber = Array.isArray(page) ? page[0] : page;
+
   if (!mounted) return <p className="text-center">Loading...</p>;
   if (!posts) return null;
 
   return (
-    <Layout>
+    <Layout blurred={true}>
       <Head>
-        <title>Projects - Mat Wilk - Software Engineer</title>
+        <title>matewilk - software engineer</title>
       </Head>
       <Breadcrumb
-        title="Projects"
+        title={slug}
         paths={[
           {
             name: "Home",
@@ -46,40 +47,54 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
           },
           {
             name: "Projects",
+            link: "/posts/1",
+          },
+          {
+            name: slug,
             link: "",
           },
         ]}
+        blurred={true}
       />
       <div className="blogs py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
             <div className="col-span-1 lg:col-span-9">
               <div className="grid grid-cols-2 gap-7">
-                {posts &&
-                  posts?.map((post, index) => (
-                    <motion.div
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 * index }}
-                      variants={childrenAnimation}
-                      className="col-span-2 sm:col-span-1"
-                      key={index}
-                    >
-                      <Blog post={post} />
-                    </motion.div>
-                  ))}
+                {posts?.map((post, index) => (
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 * index }}
+                    variants={childrenAnimation}
+                    className="col-span-2 md:col-span-1"
+                    key={index}
+                  >
+                    <Blog {...post} />
+                  </motion.div>
+                ))}
               </div>
               <div className="flex gap-3 pt-10 text-center">
-                {page !== "1" && (
-                  <Link href={`/posts/${String(parseInt(page) - 1)}`}>
+                {pageNumber !== "1" && (
+                  <Link
+                    legacyBehavior
+                    href={`/postcategory/${slug}/${String(
+                      parseInt(pageNumber) - 1
+                    )}`}
+                  >
                     <a className="btn btn-small">
                       <span>Prev</span>
                     </a>
                   </Link>
                 )}
                 {hasMore && (
-                  <Link href={`/posts/${String(parseInt(page) + 1)}`}>
+                  <Link
+                    legacyBehavior
+                    href={`/postcategory/${slug}/${String(
+                      parseInt(pageNumber) + 1
+                    )}`}
+                  >
                     <a className="btn btn-small">
                       <span>Next</span>
                     </a>
@@ -103,7 +118,10 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/postcategory/${createSlug(category)}/1`}>
+                        <Link
+                          legacyBehavior
+                          href={`/postcategory/${createSlug(category)}/1`}
+                        >
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">
@@ -135,8 +153,18 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
                     {recentPosts.map((post, index) => (
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
-                          <Link href={`/postdetails/${post.slug}`}>
-                            <a className="text-heading no-underline hover:text-primary hover:underline">
+                          <Link
+                            legacyBehavior
+                            href={
+                              post.link
+                                ? post.link
+                                : `/postdetails/${post.slug}`
+                            }
+                          >
+                            <a
+                              target="_blank"
+                              className="text-heading no-underline hover:text-primary hover:underline"
+                            >
                               {post.title}{" "}
                             </a>
                           </Link>
@@ -149,9 +177,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
                             {
                               day: "2-digit",
                             }
-                          )}, ${new Date(post.date).getFullYear({
-                            year: "numeric",
-                          })}`}
+                          )}, ${new Date(post.date).getFullYear()}`}
                         </small>
                       </li>
                     ))}
@@ -166,10 +192,10 @@ const Posts = ({ posts, hasMore, categories, recentPosts }) => {
   );
 };
 
-export default Posts;
+export default CategoryPosts;
 
 export function getStaticPaths() {
-  const paths = getPagesPath();
+  const paths = getCategoryPaths("posts");
 
   return {
     paths,
@@ -177,10 +203,15 @@ export function getStaticPaths() {
   };
 }
 
-export function getStaticProps({ params: { slug } }) {
-  const { posts, hasMore } = getPostsByPage({ page: parseInt(slug) });
-  const categories = getAllCategories();
-  const recentPosts = getRecentPosts();
+export function getStaticProps({ params: { slug, page } }) {
+  const { posts, hasMore } = getPostsByCategory({
+    urlPath: "posts",
+    category: slug,
+    page,
+    limit: 6,
+  });
+  const categories = getAllCategories("posts");
+  const recentPosts = getRecentPosts("posts");
 
   return {
     props: {

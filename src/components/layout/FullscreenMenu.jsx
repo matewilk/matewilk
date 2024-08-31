@@ -4,7 +4,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
   return (
     <ul className="fullscreen-menulist mb-0 flex h-screen items-center justify-between pl-0">
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/homepage1">
+        <Link legacyBehavior href="/homepage1">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}
@@ -14,7 +14,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
         </Link>
       </li>
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/about">
+        <Link legacyBehavior href="/about">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}
@@ -24,7 +24,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
         </Link>
       </li>
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/resume">
+        <Link legacyBehavior href="/resume">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}
@@ -34,7 +34,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
         </Link>
       </li>
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/projects">
+        <Link legacyBehavior href="/projects">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}
@@ -44,7 +44,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
         </Link>
       </li>
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/blogs/1">
+        <Link legacyBehavior href="/blogs/1">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}
@@ -54,7 +54,7 @@ const FullscreenMenu = ({ fullMenuHandler }) => {
         </Link>
       </li>
       <li className="section group flex basis-1/5 items-center justify-center self-stretch border-l border-white border-opacity-10 text-center transition-all duration-500 first:border-l-0 hover:basis-2/5">
-        <Link href="/contact">
+        <Link legacyBehavior href="/contact">
           <a
             className="flex w-full items-center justify-center self-stretch p-5 text-5xl font-bold uppercase text-heading group-hover:text-primary xl:text-6xl"
             onClick={(e) => fullMenuHandler(false)}

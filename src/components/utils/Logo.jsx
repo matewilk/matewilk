@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Logo = ({ url = "/", text = false }) => {
   return (
-    <Link href={url}>
+    <Link legacyBehavior href={url}>
       <a className="sitelogo py-2">
         {text ? (
           <span className="text-3xl font-bold uppercase leading-none text-primary xl:text-4xl">

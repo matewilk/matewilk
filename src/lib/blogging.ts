@@ -5,19 +5,31 @@ import { createSlug, filterPostsByPage, sortPostByDate } from ".";
 
 const LIMIT = 6;
 
+export type BlogPost = {
+  title: string;
+  date: string;
+  category: Array<string>;
+  cover: string;
+  thumb: string;
+  link: string;
+  slug: string;
+  imagegallery: Array<string>;
+  videogallery: Array<string>;
+};
+
 // Get all post
-const getAllPosts = (urlPath) => {
+const getAllPosts = (urlPath: string): Array<string> => {
   return fs.readdirSync(path.join(process.cwd(), `src/${urlPath}`));
 };
 
 // get all posts slug
-const getAllPostsSlug = (urlPath) => {
+const getAllPostsSlug = (urlPath: string): Array<string> => {
   const files = getAllPosts(urlPath);
   return files.map((filename) => filename.replace(/\.(md|mdx)$/, ""));
 };
 
 // Get all posts data
-const getAllPostsData = (urlPath) => {
+const getAllPostsData = (urlPath: string): Array<BlogPost> => {
   const files = getAllPosts(urlPath);
   const posts = files.map((filename) => {
     const slug = filename.replace(/\.(md|mdx)$/, "");
@@ -32,13 +44,17 @@ const getAllPostsData = (urlPath) => {
     return {
       slug,
       ...frontmatter,
-    };
+    } as BlogPost;
   });
   return posts.sort(sortPostByDate);
 };
 
 // Get posts by page
-const getPostsByPage = ({ page = 1, limit = 6, urlPath = "posts" }) => {
+const getPostsByPage = ({
+  page = 1,
+  limit = 6,
+  urlPath = "posts",
+}): { hasMore: boolean; posts: Array<BlogPost> } => {
   const tempPosts = getAllPostsData(urlPath);
   const posts = filterPostsByPage(tempPosts, page, limit);
   return {
@@ -79,7 +95,7 @@ const getPostsPath = (urlPath = "posts") => {
 };
 
 // Get single post data
-const getSinglePost = (slug) => {
+const getSinglePost = (slug: string) => {
   const post = fs.readFileSync(
     path.join(process.cwd(), "src/posts", slug + ".md"),
     "utf-8"

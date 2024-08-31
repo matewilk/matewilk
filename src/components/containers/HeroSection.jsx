@@ -106,6 +106,7 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
               className="herosection-bottom absolute left-0 top-auto bottom-10 w-full justify-between text-center"
             >
               <Link
+                legacyBehavior
                 activeClass="active"
                 to="section-about"
                 spy={true}

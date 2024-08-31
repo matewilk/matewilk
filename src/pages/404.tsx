@@ -4,17 +4,18 @@ import Link from "next/link";
 import { Breadcrumb } from "../components/elements";
 import { Layout } from "../components/layout";
 import { toBase64, shimmer, imageLoader } from "../lib/utils";
+import { FC } from "react";
 
-const NotFound = () => {
+const NotFound: FC = () => {
   return (
-    <Layout>
+    <Layout blurred={false}>
       <Head>
-        <title>Not Found - Bieber - React Personal Portfolio Template</title>
+        <title>Not Found - matewilk portfolio website</title>
       </Head>
 
       {/* Start NotFound Section */}
       <section className="section-notfound">
-        <Breadcrumb title="Page not found" />
+        <Breadcrumb title="Page not found" blurred={false} paths={false} />
         <div className="not-found-wrapper pb-24 pt-10 lg:pt-14 lg:pb-28 xl:pt-16 xl:pb-32">
           <div className="container mx-auto">
             <div className="not-found text-center">
@@ -31,7 +32,7 @@ const NotFound = () => {
                 )}`}
               />
               <div>
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a className="btn btn-large">
                     <span>Back to home</span>
                   </a>

@@ -79,7 +79,10 @@ const PostPage = ({ title, date, cover, category, content }) => {
                       key={i}
                       className="after:content-[','] last:after:hidden"
                     >
-                      <Link href={`/blogcategory/${createSlug(cat)}/1`}>
+                      <Link
+                        legacyBehavior
+                        href={`/blogcategory/${createSlug(cat)}/1`}
+                      >
                         <a className="text-body hover:text-primary">{cat}</a>
                       </Link>
                     </span>
@@ -93,9 +96,7 @@ const PostPage = ({ title, date, cover, category, content }) => {
                     month: "short",
                   })} ${new Date(date).toLocaleDateString("en-us", {
                     day: "2-digit",
-                  })}, ${new Date(date).getFullYear({
-                    year: "numeric",
-                  })}`}
+                  })}, ${new Date(date).getFullYear()}`}
                 </span>
               </p>
             </div>

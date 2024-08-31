@@ -19,7 +19,7 @@ const Home = ({ posts }) => {
   return (
     <Layout blurred>
       <Head>
-        <title>matewilk - software engineer</title>
+        <title>matewilk - Software Engineer</title>
       </Head>
 
       {/* Start Hero Section */}

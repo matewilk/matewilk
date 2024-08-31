@@ -37,7 +37,10 @@ const ContactSection = () => {
                 <h5 className="mb-2">Contact number</h5>
                 {data.phoneNumbers.map((number, index) => (
                   <p className="mb-0" key={index}>
-                    <Link href={`tel:${number.split("-").join("")}`}>
+                    <Link
+                      legacyBehavior
+                      href={`tel:${number.split("-").join("")}`}
+                    >
                       <a className="no-underline">{number}</a>
                     </Link>
                   </p>
@@ -52,7 +55,7 @@ const ContactSection = () => {
                 <h5 className="mb-2">Contact mail</h5>
                 {data.emailAddress.map((email, index) => (
                   <p className="mb-0" key={index}>
-                    <Link href={`mailto:${email}`}>
+                    <Link legacyBehavior href={`mailto:${email}`}>
                       <a className="no-underline">{email}</a>
                     </Link>
                   </p>

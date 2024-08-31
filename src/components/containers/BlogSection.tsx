@@ -57,7 +57,7 @@ const BlogSection = ({ posts }) => {
           posts.map((post, index) => (
             <SwiperSlide key={index}>
               <div className="slider-item">
-                <Blog post={post} />
+                <Blog {...post} />
               </div>
             </SwiperSlide>
           ))}

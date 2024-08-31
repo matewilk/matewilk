@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
           <p className="mb-0 w-full md:w-auto">
             &copy; {new Date().getFullYear()}, All right reserved
-            <Link href="/">
+            <Link legacyBehavior href="/">
               <a className="pl-1.5 font-medium text-heading no-underline hover:text-primary">
                 Mateusz Wilk Ltd
               </a>

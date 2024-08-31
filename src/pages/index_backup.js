@@ -12,7 +12,10 @@ const index = ({ pages }) => {
           <div className="header-inner flex items-center justify-between py-3">
             <Logo url="/" />
             <div className="header-button hidden lg:block">
-              <Link href="https://themeforest.net/user/nuclear_themes/portfolio">
+              <Link
+                legacyBehavior
+                href="https://themeforest.net/user/nuclear_themes/portfolio"
+              >
                 <a className="btn">
                   <span>Buy Now</span>
                 </a>
@@ -57,7 +60,7 @@ const index = ({ pages }) => {
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
               {pages.map((page) => (
                 <div className="col-span-1" key={page.id}>
-                  <Link href={page.path}>
+                  <Link legacyBehavior href={page.path}>
                     <a className="card hovercard block overflow-hidden">
                       <div className="imagebox overflow-hidden rounded">
                         <Image
@@ -75,7 +78,7 @@ const index = ({ pages }) => {
                 </div>
               ))}
               <div className="col-span-1">
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a className="card hovercard block overflow-hidden">
                     <div className="imagebox overflow-hidden rounded">
                       <Image
@@ -100,7 +103,7 @@ const index = ({ pages }) => {
         <div className="contianer mx-auto">
           <p className="mb-0 py-4 text-center">
             &copy; {new Date().getFullYear()}, All right reserved
-            <Link href="/">
+            <Link legacyBehavior href="/">
               <a className="pl-1.5 font-medium text-heading no-underline hover:text-primary">
                 NuclearThemes
               </a>
