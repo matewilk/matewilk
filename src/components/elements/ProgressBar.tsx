@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
+import { Motion } from "../utils/MotionWrapper";
 
 const ProgressBar = ({ skill: { title, percentage } }) => {
   return (
     <div className="progress">
       <h5>{title}</h5>
       <div className="progress-bar relative h-2 w-full rounded-full bg-primary bg-opacity-20">
-        <motion.span
+        <Motion
+          type="span"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -16,7 +17,7 @@ const ProgressBar = ({ skill: { title, percentage } }) => {
           }}
           className="progress-progress absolute left-0 top-0 h-full rounded-full bg-primary"
           style={{ width: `${percentage}%` }}
-        ></motion.span>
+        ></Motion>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Navigation = () => {
   const router = useRouter();

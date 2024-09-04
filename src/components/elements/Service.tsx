@@ -1,3 +1,4 @@
+"use client";
 import { ReactSVG } from "react-svg";
 
 const Service = ({ service: { title, text, icon } }) => {

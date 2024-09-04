@@ -1,14 +1,25 @@
+"use client";
 import { useCallback, useRef } from "react";
-import { useQuery } from "react-query";
 import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { getClientReviews } from "../../fetchers";
-import { Review } from "../elements";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 
-const ReviewsSection = () => {
-  const { data } = useQuery("clientreviews", getClientReviews);
+import Review from "../elements/Review";
 
-  const sliderRef = useRef(null);
+type Review = {
+  id: string;
+  name: string;
+  meta: string;
+  givenreview: string;
+  image: string;
+  text: string;
+};
+
+type Props = {
+  data: Array<Review>;
+};
+
+export const Reviews = ({ data }: Props) => {
+  const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -19,8 +30,6 @@ const ReviewsSection = () => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
   }, []);
-
-  if (!data) return null;
 
   return (
     <div className="swiper-holder">
@@ -58,5 +67,3 @@ const ReviewsSection = () => {
     </div>
   );
 };
-
-export default ReviewsSection;

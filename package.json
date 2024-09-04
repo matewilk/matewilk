@@ -35,7 +35,7 @@
     "react-scroll-parallax": "^3.2.0",
     "react-star-ratings": "^2.3.0",
     "react-svg": "^14.1.18",
-    "react-typed": "^1.2.0",
+    "react-typed": "^2.0.12",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "sharp": "^0.30.4",

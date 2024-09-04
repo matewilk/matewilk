@@ -2,6 +2,30 @@ const withPlugins = require("next-compose-plugins");
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
+function withSplitSVGr(config) {
+  return Object.assign({}, config, {
+    webpack(config, options) {
+      config.module.rules.push({
+        test: /\.svg$/i,
+        type: "asset",
+        resourceQuery: /url/, // *.svg?url
+      });
+
+      config.module.rules.push({
+        test: /\.svg$/i,
+        use: ["@svgr/webpack"],
+        resourceQuery: /svgr/, // *.svg?svgr
+      });
+
+      if (typeof config.webpack === "function") {
+        return config.webpack(config, options);
+      }
+
+      return config;
+    },
+  });
+}
+
 const nextConfig = {
   async headers() {
     return [
@@ -27,23 +51,25 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     deviceSizes: [640, 768, 1024, 1280, 1536],
-    loader: "custom",
+    // loader: "custom",
     path: "/",
   },
 };
 
-module.exports = withPlugins(
-  [
+module.exports = withSplitSVGr(
+  withPlugins(
     [
-      withPWA,
-      {
-        pwa: {
-          disable: process.env.NODE_ENV === "development",
-          dest: "public",
-          runtimeCaching,
+      [
+        withPWA,
+        {
+          pwa: {
+            disable: process.env.NODE_ENV === "development",
+            dest: "public",
+            runtimeCaching,
+          },
         },
-      },
+      ],
     ],
-  ],
-  nextConfig
+    nextConfig
+  )
 );

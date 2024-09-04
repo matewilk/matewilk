@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { useQuery } from "react-query";
 import { getInformation } from "../../fetchers";
-import { SocialIcons } from "../elements";
+import SocialIcons from "../elements/SocialIcons";
 
-const Footer = () => {
-  const { data } = useQuery("information", getInformation);
+const Footer = async () => {
+  const data = await getInformation();
 
   if (!data) return null;
 

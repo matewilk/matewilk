@@ -1,18 +1,18 @@
-import { motion } from "framer-motion";
-import { useQuery } from "react-query";
+import { Motion } from "../utils/MotionWrapper";
 import { getLanguageskills } from "../../fetchers";
 import { childrenAnimation } from "../../lib/motion";
-import { ProgressBar } from "../elements";
+import ProgressBar from "../elements/ProgressBar";
 
-const LanguageSkills = () => {
-  const { data } = useQuery("language-skills", getLanguageskills);
+const LanguageSkills = async () => {
+  const data = await getLanguageskills();
 
   if (!data) return null;
 
   return (
     <div className="grid grid-cols-2 gap-7">
       {data?.map((skill, index) => (
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -32,7 +32,7 @@ const LanguageSkills = () => {
           key={skill.id}
         >
           <ProgressBar skill={skill} />
-        </motion.div>
+        </Motion>
       ))}
     </div>
   );

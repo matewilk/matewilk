@@ -1,18 +1,18 @@
-import { motion } from "framer-motion";
-import { useQuery } from "react-query";
+import { Motion } from "../utils/MotionWrapper";
 import { getTechskills } from "../../fetchers";
 import { childrenAnimation } from "../../lib/motion";
-import { ProgressCircle } from "../elements";
+import ProgressCircle from "../elements/ProgressCircle";
 
-const TechSkills = () => {
-  const { data } = useQuery("tech-skills", getTechskills);
+const TechSkills = async () => {
+  const data = await getTechskills();
 
   if (!data) return null;
 
   return (
     <div className="grid grid-cols-3 gap-7">
       {data?.map((skill, index) => (
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -31,7 +31,7 @@ const TechSkills = () => {
           }}
         >
           <ProgressCircle skill={skill} />
-        </motion.div>
+        </Motion>
       ))}
     </div>
   );

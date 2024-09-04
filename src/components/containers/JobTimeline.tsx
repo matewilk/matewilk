@@ -1,12 +1,20 @@
-import { motion } from "framer-motion";
 import { RiBriefcaseLine } from "react-icons/ri";
-import { useQuery } from "react-query";
+
+import { Motion } from "../utils/MotionWrapper";
 import { getJobExperience } from "../../fetchers";
 import { childrenAnimation } from "../../lib/motion";
-import { TimelineItem } from "../elements";
+import TimelineItem from "../elements/TimelineItem";
 
-const JobTimeline = () => {
-  const { data } = useQuery("job-experience", getJobExperience);
+type Job = {
+  id: string;
+  title: string;
+  meta: string;
+  text: string;
+  year: string;
+};
+
+const JobTimeline = async () => {
+  const data: Array<Job> = await getJobExperience();
 
   if (!data) return null;
 
@@ -17,7 +25,8 @@ const JobTimeline = () => {
         Work Experience
       </h4>
       {data?.map((timeline, index) => (
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -27,7 +36,7 @@ const JobTimeline = () => {
           key={timeline.id}
         >
           <TimelineItem timeline={timeline} />
-        </motion.div>
+        </Motion>
       ))}
     </div>
   );

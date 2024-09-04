@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { RiArrowDownLine } from "react-icons/ri";
-import { Link } from "react-scroll";
-import { SocialIcons } from "../elements";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
-import { motion } from "framer-motion";
-import { childrenAnimation } from "../../lib/motion";
-import { useQuery } from "react-query";
-import { getInformation } from "../../fetchers";
-import ReactTyped from "react-typed";
+import Link from "next/link";
 
-const HeroSection = ({ blurred, scroll = true, typed = true }) => {
-  const { data } = useQuery("information", getInformation);
+import { Motion } from "../utils/MotionWrapper";
+import { childrenAnimation } from "../../lib/motion";
+import { Typed } from "../utils/TypedWrapper";
+import { getInformation } from "../../fetchers";
+import SocialIcons from "../elements/SocialIcons";
+
+export const HeroSection = async ({
+  blurred = true,
+  scroll = true,
+  typed = true,
+}) => {
+  const data = await getInformation();
 
   if (!data) return null;
 
@@ -27,42 +30,39 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
         <div className="container relative mx-auto">
           <div className="flex min-h-screen w-full items-center justify-center">
             <div className="herosection-content w-full py-20 text-center md:w-3/4">
-              <motion.div
+              <Motion
+                type="div"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
+                transition={{ duration: 0.4 }}
                 variants={childrenAnimation}
                 className="herosection-imagewrapper relative mb-5 inline-block overflow-hidden rounded-full align-middle"
               >
                 <span className="herosection-imageanimation absolute left-0 top-0 z-10 h-full w-full animate-spin rounded-full bg-gradient-to-tr from-primary to-transparent"></span>
                 <div className="herosection-image fiximage relative z-20 inline-block h-[150px] w-[150px] overflow-hidden rounded-full border-6 border-primary border-opacity-10 align-middle">
                   <Image
-                    loader={imageLoader}
+                    // loader={imageLoader}
                     unoptimized={true}
                     src={data.thumbImage}
                     alt={data.fullName}
-                    height={100}
-                    width={100}
-                    layout="responsive"
-                    placeholder="blur"
-                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                      shimmer(110, 110)
-                    )}`}
+                    height={200}
+                    width={200}
                   />
                 </div>
-              </motion.div>
-              <motion.h1
+              </Motion>
+              <Motion
+                type="h1"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 variants={childrenAnimation}
                 className="mb-5 text-heading"
               >
                 <span className="block sm:inline">Hi, I am</span>{" "}
                 {typed ? (
-                  <ReactTyped
+                  <Typed
                     loop
                     typeSpeed={100}
                     backSpeed={20}
@@ -73,57 +73,52 @@ const HeroSection = ({ blurred, scroll = true, typed = true }) => {
                 ) : (
                   <span className="text-primary">{data.fullName}</span>
                 )}
-              </motion.h1>
-              <motion.p
+              </Motion>
+              <Motion
+                type="p"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                variants={childrenAnimation}
+                className="lead mb-0"
+              >
+                {data.bio}
+              </Motion>
+              <Motion
+                type="div"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.6 }}
                 variants={childrenAnimation}
-                className="lead mb-0"
-              >
-                {data.bio}
-              </motion.p>
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.8 }}
-                variants={childrenAnimation}
                 className="herosection-socialicons mt-7 text-center"
               >
-                <SocialIcons data={data.socialAddress} />
-              </motion.div>
+                <SocialIcons data={data.socialAddress} rounded={false} />
+              </Motion>
             </div>
           </div>
           {scroll ? (
-            <motion.div
+            <Motion
+              type="div"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 1 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
               variants={childrenAnimation}
               className="herosection-bottom absolute left-0 top-auto bottom-10 w-full justify-between text-center"
             >
               <Link
-                legacyBehavior
-                activeClass="active"
-                to="section-about"
-                spy={true}
-                smooth="easeInQuad"
-                offset={-74}
-                duration={1000}
-                className="cursor-pointer text-xs font-medium uppercase tracking-widest transition-all hover:text-primary"
+                href="/#section-about"
+                className="flex cursor-pointer items-center justify-center text-xs font-medium uppercase tracking-widest transition-all hover:text-primary"
               >
                 <RiArrowDownLine className="inline animate-bounce text-base" />
                 <span className="pl-2">Scroll Down</span>
               </Link>
-            </motion.div>
+            </Motion>
           ) : null}
         </div>
       </div>
     </div>
   );
 };
-
-export default HeroSection;

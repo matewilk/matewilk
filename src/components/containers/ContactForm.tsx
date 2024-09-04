@@ -1,13 +1,14 @@
+"use client";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { settings } from "../../settings/settings";
 
 const ContactForm = () => {
-  const currentForm = useRef();
+  const currentForm = useRef<HTMLFormElement | null>(null);
 
-  const [serverSuccess, setServerSuccess] = useState("");
-  const [serverError, setServerError] = useState("");
+  const [serverSuccess, setServerSuccess] = useState<boolean | string>("");
+  const [serverError, setServerError] = useState<boolean | string>("");
 
   const {
     register,
@@ -16,6 +17,7 @@ const ContactForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    if (!currentForm.current) return;
     emailjs
       .sendForm(
         settings.emailjs_serviceid,
@@ -109,8 +111,8 @@ const ContactForm = () => {
         <label htmlFor="message">Message</label>
         <textarea
           placeholder="Enter you message..."
-          cols="1"
-          rows="5"
+          cols={1}
+          rows={5}
           id="message"
           {...register("message", { required: true })}
         />

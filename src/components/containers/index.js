@@ -9,13 +9,13 @@ import ServicesSection from "./ServicesSection";
 import SkillsSection from "./SkillsSection";
 
 export {
-    HeroSection,
-    AboutSection,
-    SkillsSection,
-    ServicesSection,
-    ResumeSection,
-    PortfoliosSection,
-    ReviewsSection,
-    BlogSection,
-    ContactSection,
+  HeroSection,
+  AboutSection,
+  SkillsSection,
+  ServicesSection,
+  ResumeSection,
+  PortfoliosSection,
+  ReviewsSection,
+  BlogSection,
+  ContactSection,
 };

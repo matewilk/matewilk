@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
 import { RiBookLine } from "react-icons/ri";
-import { useQuery } from "react-query";
+
+import { Motion } from "../utils/MotionWrapper";
 import { getEducationBackground } from "../../fetchers";
 import { childrenAnimation } from "../../lib/motion";
-import { TimelineItem } from "../elements";
+import TimelineItem from "../elements/TimelineItem";
 
-const EducationTimeline = () => {
-  const { data } = useQuery("education-background", getEducationBackground);
+const EducationTimeline = async () => {
+  const data = await getEducationBackground();
 
   if (!data) return null;
 
@@ -17,7 +17,8 @@ const EducationTimeline = () => {
         Degree & Education
       </h4>
       {data?.map((timeline, index) => (
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -27,7 +28,7 @@ const EducationTimeline = () => {
           key={timeline.id}
         >
           <TimelineItem timeline={timeline} />
-        </motion.div>
+        </Motion>
       ))}
     </div>
   );

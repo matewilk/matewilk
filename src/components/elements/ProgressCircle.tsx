@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+"use client";
 import { ReactSVG } from "react-svg";
 
+import { Motion } from "../utils/MotionWrapper";
 import { childrenAnimation } from "../../lib/motion";
 
 const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
@@ -13,7 +14,8 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
   };
   return (
     <div className="circleprogress card hovercard relative p-4 text-center md:p-5">
-      <motion.div
+      <Motion
+        type="div"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -21,7 +23,8 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
         variants={childrenAnimation}
         className="relative mb-2 inline-block text-primary"
       >
-        <motion.svg
+        <Motion
+          type="svg"
           className="circle"
           width="120"
           height="120"
@@ -30,7 +33,8 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.circle
+          <Motion
+            type="circle"
             className="circlebg"
             cx="60"
             cy="60"
@@ -39,7 +43,8 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
             strokeLinecap="round"
             strokeWidth={8}
           />
-          <motion.circle
+          <Motion
+            type="circle"
             cx="60"
             cy="60"
             r="54"
@@ -48,7 +53,7 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
             variants={draw}
             transition={{ duration: 1, delay: 0.8 }}
           />
-        </motion.svg>
+        </Motion>
         <span className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 transform text-center text-xl text-body">
           <ReactSVG
             className="fill-current text-primary"
@@ -60,7 +65,7 @@ const ProgressCircle = ({ skill: { title, percentage, icon } }) => {
             }}
           />
         </span>
-      </motion.div>
+      </Motion>
       <h5>{title}</h5>
     </div>
   );

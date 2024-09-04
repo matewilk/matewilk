@@ -1,12 +1,13 @@
+"use client";
 import { useCallback, useRef, useState, useEffect } from "react";
 import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Blog } from "../elements";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import Blog from "../elements/Blog";
 import { Spinner } from "../utils";
 
 const BlogSection = ({ posts }) => {
   const [mounted, setMounted] = useState(false);
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
     setMounted(true);

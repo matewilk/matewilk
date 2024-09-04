@@ -1,19 +1,19 @@
 import Image from "next/image";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
-import { motion } from "framer-motion";
 import { childrenAnimation } from "../../lib/motion";
 import { getInformation } from "../../fetchers";
-import { useQuery } from "react-query";
 
-const AboutSection = () => {
-  const { data } = useQuery("information", getInformation);
+import { Motion } from "../utils/MotionWrapper";
+
+const AboutSection = async () => {
+  const data = await getInformation();
 
   if (!data) return null;
 
   return (
     <div className="grid grid-cols-2 items-center gap-7">
       <div className="col-span-2 lg:col-span-1">
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -27,23 +27,18 @@ const AboutSection = () => {
             <span className="absolute -left-2.5 top-auto z-10 h-10 w-2.5 animate-ledgerbottomtop rounded-full bg-gradient-to-t from-transparent to-primary"></span>
             <span className="absolute left-auto -right-2.5 z-10 h-10 w-2.5 animate-ledgertopbottom rounded-full bg-gradient-to-b from-transparent to-primary"></span>
             <Image
-              loader={imageLoader}
               unoptimized={true}
               src={data.largeImage}
               height={422}
               width={660}
-              layout="responsive"
               alt={data.fullName}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(660, 422)
-              )}`}
             />
           </div>
-        </motion.div>
+        </Motion>
       </div>
       <div className="col-span-2 lg:col-span-1">
-        <motion.div
+        <Motion
+          type="div"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -69,22 +64,6 @@ const AboutSection = () => {
                   Last Name{" "}
                 </strong>
                 : {data.lastName}
-              </li>
-            )}
-            {data.age && (
-              <li className="text-lg">
-                <strong className="inline-block min-w-[120px] font-medium">
-                  Age{" "}
-                </strong>
-                : {data.age} years
-              </li>
-            )}
-            {data.nationality && (
-              <li className="text-lg">
-                <strong className="inline-block min-w-[120px] font-medium">
-                  Nationality{" "}
-                </strong>
-                : {data.nationality}
               </li>
             )}
             {data.languages.length ? (
@@ -126,7 +105,7 @@ const AboutSection = () => {
           <a href="/resume.pdf" className="btn mt-3">
             <span>Download Resume</span>
           </a>
-        </motion.div>
+        </Motion>
       </div>
     </div>
   );

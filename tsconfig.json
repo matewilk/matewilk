@@ -12,13 +12,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "target": "esnext"
+    "target": "esnext",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages/blogs/[slug].tsx"
+    "src/pages/blogs/[slug].tsx",
+    ".next/types/**/*.ts",
+    "src/components/utils/PortfolioFilters.jsx",
+    "src/components/containers/AboutSection.jsx"
   ],
   "exclude": ["node_modules"]
 }
