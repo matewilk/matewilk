@@ -14,9 +14,21 @@ import { childrenAnimation } from "../../../lib/motion";
 import { createSlug } from "../../../lib";
 import { Layout } from "../../../components/layout";
 
-const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
+type CategoryPostsProps = {
+  posts: Array<any>;
+  hasMore: boolean;
+  categories: Array<string>;
+  recentPosts: Array<any>;
+};
+
+const CategoryPosts = ({
+  posts,
+  hasMore,
+  categories,
+  recentPosts,
+}: CategoryPostsProps) => {
   const [mounted, setMounted] = useState(false);
-  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState<Array<string>>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -29,7 +41,7 @@ const CategoryPosts = ({ posts, hasMore, categories, recentPosts }) => {
 
   const { page, slug } = router.query;
 
-  const pageNumber = Array.isArray(page) ? page[0] : page;
+  const pageNumber = Array.isArray(page) ? page[0] : page ?? "1";
 
   if (!mounted) return <p className="text-center">Loading...</p>;
   if (!posts) return null;

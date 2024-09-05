@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { Metadata } from "next";
 
+import { getPostsByPage } from "../lib/blogging";
 import { HeroSection } from "../components/containers/HeroSection";
 import SectionHeading from "../components/utils/SectionHeading";
 import AboutSection from "../components/containers/AboutSection";
@@ -11,10 +12,9 @@ import PortfoliosSection from "../components/containers/PortfoliosSection";
 import ReviewsSection from "../components/containers/ReviewsSection";
 import BlogSection from "../components/containers/BlogSection";
 import ContactSection from "../components/containers/ContactSection";
-import { getPostsByPage } from "../lib/blogging";
 
 export default async function Home() {
-  const posts = await getPosts();
+  const { posts } = getPostsByPage({ page: 1, limit: 5, urlPath: "blogs" });
   return (
     <div className="container mx-auto">
       <Section name="section-home" className="hero-section">
@@ -99,11 +99,6 @@ const Section: FC<{
       {children}
     </section>
   );
-};
-
-export const getPosts = async () => {
-  const { posts } = getPostsByPage({ page: 1, limit: 5, urlPath: "blogs" });
-  return posts;
 };
 
 export const metadata: Metadata = {

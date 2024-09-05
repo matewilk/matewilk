@@ -1,40 +1,31 @@
-import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
-import { Blog, Breadcrumb } from "../../components/elements";
+import Blog from "../../components/elements/Blog";
+import Breadcrumb from "../../components/elements/Breadcrumb";
 import { createSlug } from "../../lib";
-import {
-  BlogPost,
-  getAllCategories,
-  getPagesPath,
-  getPostsByPage,
-  getRecentPosts,
-} from "../../lib/blogging";
+import { BlogPost } from "../../lib/blogging";
 import { childrenAnimation } from "../../lib/motion";
-import { Layout } from "../../components/layout";
+import { Motion } from "../../components/utils/MotionWrapper";
 
 type PostsProps = {
+  type: "posts" | "blogs";
+  page: string;
   posts: Array<BlogPost>;
   hasMore: boolean;
   categories: Array<string>;
   recentPosts: Array<BlogPost>;
 };
 
-const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
+export const BlogList = ({
+  type,
+  page,
+  posts,
+  hasMore,
+  categories,
+  recentPosts,
+}: PostsProps) => {
   const uniqueCategories = [...new Set(categories)];
-
-  const router = useRouter();
-  const { slug } = router.query;
-  const page = Array.isArray(slug) ? slug[0] : slug;
-
-  if (!posts) return null;
-
   return (
-    <Layout blurred={true}>
-      <Head>
-        <title>matewilk - software engineer</title>
-      </Head>
+    <>
       <Breadcrumb
         title="Blogs"
         paths={[
@@ -43,7 +34,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
             link: "/",
           },
           {
-            name: "Blogs",
+            name: type === "posts" ? "Projects" : "Blogs",
             link: "",
           },
         ]}
@@ -56,7 +47,8 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
               <div className="grid grid-cols-2 gap-7">
                 {posts &&
                   posts?.map((post, index) => (
-                    <motion.div
+                    <Motion
+                      type="div"
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
@@ -66,7 +58,7 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
                       key={index}
                     >
                       <Blog {...post} />
-                    </motion.div>
+                    </Motion>
                   ))}
               </div>
               <div className="flex gap-3 pt-10 text-center">
@@ -94,7 +86,8 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
             </div>
             <div className="col-span-1 lg:col-span-3">
               <div className="widget sticky top-[107px] mt-8 space-y-10 lg:mt-0">
-                <motion.div
+                <Motion
+                  type="div"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -127,8 +120,9 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
-                <motion.div
+                </Motion>
+                <Motion
+                  type="div"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -165,42 +159,12 @@ const Posts = ({ posts, hasMore, categories, recentPosts }: PostsProps) => {
                       </li>
                     ))}
                   </ul>
-                </motion.div>
+                </Motion>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
-
-export default Posts;
-
-export function getStaticPaths() {
-  const paths = getPagesPath("blogs");
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export function getStaticProps({ params: { slug } }) {
-  const { posts, hasMore } = getPostsByPage({
-    page: parseInt(slug),
-    urlPath: "blogs",
-  });
-  const categories = getAllCategories("blogs");
-  const recentPosts = getRecentPosts("blogs");
-
-  return {
-    props: {
-      posts,
-      hasMore,
-      categories,
-      recentPosts,
-    },
-    revalidate: 10,
-  };
-}

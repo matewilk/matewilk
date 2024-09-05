@@ -68,7 +68,7 @@ const getPagesPath = (urlPath = "posts") => {
   const files = getAllPosts(urlPath);
   const pages = Math.ceil(files.length / LIMIT);
 
-  let paths = [];
+  let paths: Array<{ params: { slug: string } }> = [];
   for (let i = 1; i <= pages; i++) {
     paths.push({
       params: {
@@ -128,7 +128,7 @@ const getCategoryPaths = (urlPath = "posts") => {
     });
     const pages = Math.ceil(filteredPosts.length / LIMIT);
 
-    let tempPath = [];
+    let tempPath: Array<{ params: { slug: string; page: string } }> = [];
     for (let i = 1; i <= pages; i++) {
       tempPath.push({
         params: {

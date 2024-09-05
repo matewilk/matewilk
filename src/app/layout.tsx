@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/globals.scss";
 import { ScrollToTopBtn } from "../components/elements/ScrollToTopBtn";
+import { Metadata } from "next";
 
 export default function RootLayout({
   children,
@@ -46,3 +47,10 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Mat Wilk - Software Engineer",
+  description: "description",
+  keywords:
+    "Software Engineer, React, Next.js, TypeScript, Node.js, JavaScript",
+};

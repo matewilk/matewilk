@@ -45,7 +45,7 @@ const PortfolioFilter = ({ data, filters }: Props) => {
       setVisiblePortfolios(data.slice(0, limit));
       setTotal(data.length);
     }
-  }, [data]);
+  }, []);
 
   const handleFilter = useCallback(
     async (value: string) => {

@@ -5,8 +5,8 @@ import { useQuery } from "react-query";
 import { getInformation } from "../../fetchers";
 import { imageLoader } from "../../lib/utils";
 
-const Sidemenu = ({ fullMenu, fullMenuHandler }) => {
-  const { data } = useQuery("information", getInformation);
+const Sidemenu = async ({ fullMenu, fullMenuHandler }) => {
+  const data = await getInformation();
 
   if (!data) return null;
 

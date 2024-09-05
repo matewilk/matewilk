@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
@@ -13,7 +14,7 @@ const Blog = ({
   thumb,
   category,
   slug,
-  link = null,
+  link = "",
   imagegallery = [],
   videogallery = [],
 }: BlogPost) => {

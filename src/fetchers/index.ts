@@ -1,5 +1,3 @@
-import { http } from "./http";
-
 type Information = {
   firstName: string;
   lastName: string;
@@ -109,8 +107,10 @@ type ClientReview = {
 };
 
 const getClientReviews = async (): Promise<Array<ClientReview>> => {
-  let res = await http.get(`/clientsreview.json`);
-  return res.data;
+  let res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/clientsreview.json`
+  );
+  return await res.json();
 };
 
 export {
