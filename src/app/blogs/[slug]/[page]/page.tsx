@@ -117,7 +117,10 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/projects/${createSlug(category)}/1`}>
+                        <Link
+                          legacyBehavior
+                          href={`/projects/${createSlug(category)}/1`}
+                        >
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">

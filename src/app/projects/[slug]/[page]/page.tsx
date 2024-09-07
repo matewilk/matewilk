@@ -77,6 +77,7 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
               <div className="flex gap-3 pt-10 text-center">
                 {pageNumber !== "1" && (
                   <Link
+                    legacyBehavior
                     href={`/projects/${slug}/${String(
                       parseInt(pageNumber) - 1
                     )}`}
@@ -88,6 +89,7 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                 )}
                 {hasMore && (
                   <Link
+                    legacyBehavior
                     href={`/projects/${slug}/${String(
                       parseInt(pageNumber) + 1
                     )}`}
@@ -116,7 +118,10 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link href={`/projects/${createSlug(category)}/1`}>
+                        <Link
+                          legacyBehavior
+                          href={`/projects/${createSlug(category)}/1`}
+                        >
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">
@@ -150,6 +155,7 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
                           <Link
+                            legacyBehavior
                             href={
                               post.link
                                 ? post.link
