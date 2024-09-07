@@ -1,13 +1,21 @@
-import Footer from "../components/layout/Footer";
-import Header from "../components/layout/Header";
+import { Radio_Canada } from "next/font/google";
+import { Metadata } from "next";
+
+import Footer from "src/components/layout/Footer";
+import Header from "src/components/layout/Header";
+import { ScrollToTopBtn } from "src/components/elements/ScrollToTopBtn";
 
 import "normalize.css";
 import "nprogress/nprogress.css";
 import "swiper/css";
 import "swiper/css/navigation";
-import "../styles/globals.scss";
-import { ScrollToTopBtn } from "../components/elements/ScrollToTopBtn";
-import { Metadata } from "next";
+import "src/styles/globals.scss";
+
+const radioCanada = Radio_Canada({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-radio-canada",
+});
 
 export default function RootLayout({
   children,
@@ -16,7 +24,7 @@ export default function RootLayout({
 }) {
   const blurred = true;
   return (
-    <html lang="en">
+    <html lang="en" className={radioCanada.variable}>
       <body>
         <div
           className={`wrapper relative min-h-screen w-full bg-grey ${

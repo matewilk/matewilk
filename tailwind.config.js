@@ -25,8 +25,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        body: ["'Radio Canada', sans-serif"],
-        display: ["'Radio Canada', sans-serif"],
+        body: ["var(--font-radio-canada)"],
+        display: ["var(--font-radio-canada)"],
         segoe: ["'Segoe UI', sans-serif"],
       },
       fontSize: {
