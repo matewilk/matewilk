@@ -1,16 +1,15 @@
 import Link from "next/link";
 
-import { Motion } from "../../../../components/utils/MotionWrapper";
-import Blog from "../../../../components/elements/Blog";
-import Breadcrumb from "../../../../components/elements/Breadcrumb";
+import { Motion } from "src/components/utils/MotionWrapper";
+import Blog from "src/components/elements/Blog";
+import Breadcrumb from "src/components/elements/Breadcrumb";
 import {
   getAllCategories,
-  getCategoryPaths,
   getPostsByCategory,
   getRecentPosts,
-} from "../../../../lib/blogging";
-import { childrenAnimation } from "../../../../lib/motion";
-import { createSlug } from "../../../../lib";
+} from "src/lib/blogging";
+import { childrenAnimation } from "src/lib/motion";
+import { createSlug } from "src/lib";
 
 type CategoryPostsProps = {
   params: {
@@ -78,7 +77,6 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
               <div className="flex gap-3 pt-10 text-center">
                 {pageNumber !== "1" && (
                   <Link
-                    legacyBehavior
                     href={`/projects/${slug}/${String(
                       parseInt(pageNumber) - 1
                     )}`}
@@ -90,7 +88,6 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                 )}
                 {hasMore && (
                   <Link
-                    legacyBehavior
                     href={`/projects/${slug}/${String(
                       parseInt(pageNumber) + 1
                     )}`}
@@ -119,10 +116,7 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                   <ul className="styledlist mb-0 list-none pl-0">
                     {uniqueCategories.map((category, i) => (
                       <li key={i}>
-                        <Link
-                          legacyBehavior
-                          href={`/projects/${createSlug(category)}/1`}
-                        >
+                        <Link href={`/projects/${createSlug(category)}/1`}>
                           <a className="clearfix hover:text-primary">
                             {category}
                             <span className="float-right">
@@ -156,7 +150,6 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
                           <Link
-                            legacyBehavior
                             href={
                               post.link
                                 ? post.link

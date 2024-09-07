@@ -1,10 +1,10 @@
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Navigation = () => {
-  const router = useRouter();
-  const checkroute = router.route !== "/" && router.route !== "/homepage3";
+  const pathname = usePathname();
+  const checkroute = pathname !== "/";
 
   return (
     <nav className="flex-grow px-5 text-center">

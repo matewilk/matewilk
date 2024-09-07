@@ -64,22 +64,6 @@ const getPostsByPage = ({
   };
 };
 
-// Get Page Paths
-const getPagesPath = (urlPath = "posts") => {
-  const files = getAllPosts(urlPath);
-  const pages = Math.ceil(files.length / LIMIT);
-
-  let paths: Array<{ params: { slug: string } }> = [];
-  for (let i = 1; i <= pages; i++) {
-    paths.push({
-      params: {
-        slug: String(i),
-      },
-    });
-  }
-  return paths;
-};
-
 // Get all posts path (for nextjs getStaticPaths)
 const getPostsPath = (urlPath = "posts") => {
   const postsSlug = getAllPostsSlug(urlPath);
@@ -177,7 +161,6 @@ export {
   getPostsByPage,
   getPostsByCategory,
   getPostsPath,
-  getPagesPath,
   getSinglePost,
   getAllCategories,
   getCategoryPaths,

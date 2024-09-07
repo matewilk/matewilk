@@ -2,8 +2,8 @@ import {
   getAllCategories,
   getPostsByPage,
   getRecentPosts,
-} from "../../../lib/blogging";
-import { BlogList } from "../../../components/elements/BlogList";
+} from "src/lib/blogging";
+import { BlogList } from "src/components/elements/BlogList";
 
 const Posts = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;

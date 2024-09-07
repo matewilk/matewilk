@@ -32,7 +32,6 @@ const Portfolio = ({
             height={384}
             width={550}
             alt={title}
-            layout="responsive"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(550, 384)

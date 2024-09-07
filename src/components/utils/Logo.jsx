@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Logo = ({ url = "/", text = false }) => {
+const Logo = ({ url = "/", text = "" }) => {
   return (
     <Link legacyBehavior href={url}>
       <a className="sitelogo py-2">

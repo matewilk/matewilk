@@ -1,7 +1,8 @@
-import React, { FC, ReactNode } from "react";
+import React from "react";
 import { Metadata } from "next";
 
 import { getPostsByPage } from "../lib/blogging";
+import { Section } from "../components/layout/ScrollSection";
 import { HeroSection } from "../components/containers/HeroSection";
 import SectionHeading from "../components/utils/SectionHeading";
 import AboutSection from "../components/containers/AboutSection";
@@ -88,18 +89,6 @@ export default async function Home() {
     </div>
   );
 }
-
-const Section: FC<{
-  name: string;
-  className: string;
-  children?: ReactNode;
-}> = ({ name, className, children }) => {
-  return (
-    <section id={name} className={className}>
-      {children}
-    </section>
-  );
-};
 
 export const metadata: Metadata = {
   title: "matewilk - Software Engineer",

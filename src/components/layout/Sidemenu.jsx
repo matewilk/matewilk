@@ -22,7 +22,6 @@ const Sidemenu = async ({ fullMenu, fullMenuHandler }) => {
               alt={data.fullName}
               height={60}
               width={60}
-              layout="responsive"
               priority={true}
             />
           </a>

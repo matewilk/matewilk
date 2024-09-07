@@ -13,7 +13,6 @@ const Review = ({ review: { name, meta, givenreview, image, text } }) => {
           alt="user image"
           height={80}
           width={80}
-          layout="responsive"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(80, 80))}`}
         />

@@ -33,7 +33,6 @@ const Blog = ({
             height={225}
             width={400}
             alt={title}
-            layout="responsive"
             // objectFit="cover"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(

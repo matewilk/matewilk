@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata, ResolvingMetadata } from "next";
 
-import { createSlug } from "../../../lib";
-import { getSinglePost } from "../../../lib/blogging";
-import Breadcrumb from "../../../components/elements/Breadcrumb";
+import { createSlug } from "src/lib";
+import { getSinglePost } from "src/lib/blogging";
+import Breadcrumb from "src/components/elements/Breadcrumb";
 
 // import Comments from "../../components/utils/Comments";
 
@@ -42,7 +42,6 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 height={650}
                 width={1350}
                 alt="Blog Image"
-                layout="responsive"
                 objectFit="cover"
               />
             </div>
@@ -55,10 +54,7 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
                       key={i}
                       className="after:content-[','] last:after:hidden"
                     >
-                      <Link
-                        legacyBehavior
-                        href={`/projects/${createSlug(cat)}/1`}
-                      >
+                      <Link href={`/projects/${createSlug(cat)}/1`}>
                         <a className="text-body hover:text-primary">{cat}</a>
                       </Link>
                     </span>

@@ -18,7 +18,8 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",
@@ -26,7 +27,8 @@
     "**/*.tsx",
     "src/app/**/*.ts",
     ".next/types/**/*.ts",
-    "src/components/**/*.ts"
+    "src/components/**/*.ts",
+    "src/components/layout/Header.jsx"
   ],
   "exclude": ["node_modules"]
 }

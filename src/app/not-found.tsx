@@ -19,7 +19,7 @@ const NotFound: FC = () => {
               alt="not found"
             />
             <div>
-              <Link legacyBehavior href="/">
+              <Link href="/">
                 <a className="btn btn-large">
                   <span>Back to home</span>
                 </a>
