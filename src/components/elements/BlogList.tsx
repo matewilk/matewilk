@@ -1,13 +1,14 @@
 import Link from "next/link";
-import Blog from "../../components/elements/Blog";
-import Breadcrumb from "../../components/elements/Breadcrumb";
-import { createSlug } from "../../lib";
-import { BlogPost } from "../../lib/blogging";
-import { childrenAnimation } from "../../lib/motion";
-import { Motion } from "../../components/utils/MotionWrapper";
+import Blog from "src/components/elements/Blog";
+import Breadcrumb from "src/components/elements/Breadcrumb";
+import { createSlug } from "src/lib";
+import { BlogPost } from "src/lib/blogging";
+import { childrenAnimation } from "src/lib/motion";
+import { Motion } from "src/components/utils/MotionWrapper";
 
 type PostsProps = {
   type: "projects" | "blogs";
+  breadcrumb: Array<{ name: string; link: string }>;
   page: string;
   posts: Array<BlogPost>;
   hasMore: boolean;
@@ -17,6 +18,7 @@ type PostsProps = {
 
 export const BlogList = ({
   type,
+  breadcrumb,
   page,
   posts,
   hasMore,
@@ -28,16 +30,7 @@ export const BlogList = ({
     <>
       <Breadcrumb
         title={type === "projects" ? "Projects" : "Blogs"}
-        paths={[
-          {
-            name: "Home",
-            link: "/",
-          },
-          {
-            name: type === "projects" ? "Projects" : "Blogs",
-            link: "",
-          },
-        ]}
+        paths={breadcrumb}
         blurred={true}
       />
       <div className="blogs py-24 lg:py-28 xl:py-32">
@@ -68,7 +61,7 @@ export const BlogList = ({
                 {page !== "1" && (
                   <Link
                     legacyBehavior
-                    href={`/projects/${String(parseInt(page) - 1)}`}
+                    href={`/${type}/${String(parseInt(page) - 1)}`}
                   >
                     <a className="btn btn-small">
                       <span>Prev</span>
@@ -78,7 +71,7 @@ export const BlogList = ({
                 {hasMore && (
                   <Link
                     legacyBehavior
-                    href={`/projects/${String(parseInt(page) + 1)}`}
+                    href={`/${type}/${String(parseInt(page) + 1)}`}
                   >
                     <a className="btn btn-small">
                       <span>Next</span>
@@ -134,13 +127,20 @@ export const BlogList = ({
                   className="widget widget-recentpost card rounded p-4"
                 >
                   <h5 className="border-b border-white border-opacity-20 pb-2 font-medium text-primary">
-                    Recent Posts
+                    {type === "projects" ? "Latest Projects" : "Recent Blogs"}
                   </h5>
                   <ul className="mb-0 list-none pl-0">
                     {recentPosts.map((post, index) => (
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
-                          <Link legacyBehavior href={`/project/${post.slug}`}>
+                          <Link
+                            legacyBehavior
+                            href={
+                              type === "blogs"
+                                ? `${post.link}`
+                                : `/project/${post.slug}`
+                            }
+                          >
                             <a className="text-heading no-underline hover:text-primary hover:underline">
                               {post.title}{" "}
                             </a>

@@ -18,9 +18,21 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
 
   if (!posts) return null;
 
+  const breadcrumb = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Projects",
+      link: "",
+    },
+  ];
+
   return (
     <BlogList
       type="projects"
+      breadcrumb={breadcrumb}
       page={page}
       posts={posts}
       hasMore={hasMore}
