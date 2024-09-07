@@ -15,7 +15,7 @@ import BlogSection from "../components/containers/BlogSection";
 import ContactSection from "../components/containers/ContactSection";
 
 export default async function Home() {
-  const { posts } = getPostsByPage({ page: 1, limit: 5, urlPath: "blogs" });
+  const { posts } = getPostsByPage({ page: 1, limit: 10, urlPath: "blogs" });
   return (
     <div className="container mx-auto">
       <Section name="section-home" className="hero-section">
