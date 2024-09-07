@@ -15,6 +15,7 @@ export type BlogPost = {
   slug: string;
   imagegallery: Array<string>;
   videogallery: Array<string>;
+  type?: "project" | "blog";
 };
 
 // Get all post
@@ -102,7 +103,7 @@ const getSinglePost = (slug: string) => {
   );
   const { data: frontmatter, content } = matter(post);
   return {
-    ...frontmatter,
+    ...(frontmatter as BlogPost),
     content,
   };
 };

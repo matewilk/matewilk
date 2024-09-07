@@ -33,12 +33,25 @@ const getServices = async (): Promise<Array<Service>> => {
   return await res.json();
 };
 
-const getTechskills = async () => {
+type TechSkill = {
+  id: string;
+  title: string;
+  percentage: number;
+  icon: string;
+};
+
+const getTechskills = async (): Promise<Array<TechSkill>> => {
   let res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/techskills.json`);
   return await res.json();
 };
 
-const getLanguageskills = async () => {
+type LanguageSkill = {
+  id: string;
+  title: string;
+  percentage: number;
+};
+
+const getLanguageskills = async (): Promise<Array<LanguageSkill>> => {
   let res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/languageskills.json`
   );
@@ -75,7 +88,16 @@ const getPortfolios = async (): Promise<Array<Porfolio>> => {
   return await res.json();
 };
 
-const getJobExperience = async () => {
+type JobExperience = {
+  id: string;
+  title: string;
+  meta?: string;
+  text: string;
+  year: string;
+  button?: boolean;
+};
+
+const getJobExperience = async (): Promise<Array<JobExperience>> => {
   let res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/jobexperience.json`
   );

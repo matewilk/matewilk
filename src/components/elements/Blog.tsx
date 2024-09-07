@@ -9,6 +9,7 @@ import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 import { BlogPost } from "../../lib/blogging";
 
 const Blog = ({
+  type,
   title,
   date,
   thumb,
@@ -85,7 +86,7 @@ const Blog = ({
         </div>
       </div>
       <h5 className="mb-0">
-        <Link legacyBehavior href={link ? link : `/postdetails/${slug}`}>
+        <Link legacyBehavior href={link ? link : `/${type}/${slug}`}>
           <a
             target="_blank"
             className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
@@ -98,7 +99,7 @@ const Blog = ({
       <div className="flex list-none gap-1.5 text-sm">
         {category.map((cat, i) => (
           <span key={i} className="after:content-[','] last:after:hidden">
-            <Link legacyBehavior href={`/blogcategory/${createSlug(cat)}/1`}>
+            <Link legacyBehavior href={`/${type}s/${createSlug(cat)}/1`}>
               <a className=" hover:text-primary">{cat}</a>
             </Link>
           </span>

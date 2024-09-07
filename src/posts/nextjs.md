@@ -22,4 +22,4 @@ For the high-level overview of the integration, please refer to the [YouTube vid
 
 ### [Blog post](https://newrelic.com/blog/how-to-relic/nextjs-monitor-application-data)
 
-For the detailed step-by-step guide on how to set up the integration, please refer to the [blog post](https://blog.newrelic.com/engineering/nextjs-monitoring/) I am the author of on the New Relic Engineering Blog.
+For the detailed step-by-step guide on how to set up the integration, please refer to the [blog post](https://newrelic.com/blog/how-to-relic/nextjs-monitor-application-data) I am the author of on the New Relic Engineering Blog.

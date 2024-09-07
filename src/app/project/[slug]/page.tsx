@@ -1,39 +1,20 @@
-import { useState, useEffect } from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
-
 import { marked } from "marked";
 import Image from "next/image";
 import Link from "next/link";
-import { createSlug } from "../../lib";
-import { getPostsPath, getSinglePost } from "../../lib/blogging";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
-import { Breadcrumb } from "../../components/elements";
-import { Layout } from "../../components/layout";
-import { Spinner } from "../../components/utils";
+import { Metadata, ResolvingMetadata } from "next";
+
+import { createSlug } from "../../../lib";
+import { getSinglePost } from "../../../lib/blogging";
+import Breadcrumb from "../../../components/elements/Breadcrumb";
+
 // import Comments from "../../components/utils/Comments";
 
-const PostPage = ({ title, date, cover, category, content }) => {
-  const [mounted, setMounted] = useState(false);
-  const router = useRouter();
-  // const { slug } = router.query;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted)
-    return (
-      <div className="block py-20 text-center">
-        <Spinner />
-      </div>
-    );
+const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
+  const post = getSinglePost(slug);
+  const { title, date, cover, category, content } = post;
 
   return (
-    <Layout>
-      <Head>
-        <title>{title} - Mat Wilk - Software Engineer</title>
-      </Head>
+    <>
       <Breadcrumb
         title={title}
         paths={[
@@ -43,7 +24,7 @@ const PostPage = ({ title, date, cover, category, content }) => {
           },
           {
             name: "Projects",
-            link: "/posts/1",
+            link: "/projects/1",
           },
           {
             name: title,
@@ -56,7 +37,6 @@ const PostPage = ({ title, date, cover, category, content }) => {
           <div className="post-header mb-8">
             <div className="fiximage mb-5 overflow-hidden rounded border border-white border-opacity-20">
               <Image
-                loader={imageLoader}
                 unoptimized={true}
                 src={cover}
                 height={650}
@@ -64,10 +44,6 @@ const PostPage = ({ title, date, cover, category, content }) => {
                 alt="Blog Image"
                 layout="responsive"
                 objectFit="cover"
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(1350, 650)
-                )}`}
               />
             </div>
             <div className="flex flex-wrap justify-between gap-x-4">
@@ -81,7 +57,7 @@ const PostPage = ({ title, date, cover, category, content }) => {
                     >
                       <Link
                         legacyBehavior
-                        href={`/blogcategory/${createSlug(cat)}/1`}
+                        href={`/projects/${createSlug(cat)}/1`}
                       >
                         <a className="text-body hover:text-primary">{cat}</a>
                       </Link>
@@ -110,28 +86,24 @@ const PostPage = ({ title, date, cover, category, content }) => {
           </div> */}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
 export default PostPage;
 
-export function getStaticPaths() {
-  const paths = getPostsPath();
-
+export async function generateMetadata(
+  {
+    params: { slug },
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { title: parentTitle } = await parent;
+  const post = getSinglePost(slug);
+  const { title } = post;
   return {
-    paths,
-    fallback: false,
-  };
-}
-
-export function getStaticProps({ params: { slug } }) {
-  const postData = getSinglePost(slug);
-
-  return {
-    props: {
-      ...postData,
-    },
-    revalidate: 10,
+    title: `${title} - ${parentTitle?.absolute}`,
   };
 }

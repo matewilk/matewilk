@@ -7,7 +7,7 @@ import { childrenAnimation } from "../../lib/motion";
 import { Motion } from "../../components/utils/MotionWrapper";
 
 type PostsProps = {
-  type: "posts" | "blogs";
+  type: "projects" | "blogs";
   page: string;
   posts: Array<BlogPost>;
   hasMore: boolean;
@@ -27,14 +27,14 @@ export const BlogList = ({
   return (
     <>
       <Breadcrumb
-        title="Blogs"
+        title={type === "projects" ? "Projects" : "Blogs"}
         paths={[
           {
             name: "Home",
             link: "/",
           },
           {
-            name: type === "posts" ? "Projects" : "Blogs",
+            name: type === "projects" ? "Projects" : "Blogs",
             link: "",
           },
         ]}
@@ -57,7 +57,10 @@ export const BlogList = ({
                       className="col-span-2 sm:col-span-1"
                       key={index}
                     >
-                      <Blog {...post} />
+                      <Blog
+                        type={type === "projects" ? "project" : "blog"}
+                        {...post}
+                      />
                     </Motion>
                   ))}
               </div>
@@ -65,7 +68,7 @@ export const BlogList = ({
                 {page !== "1" && (
                   <Link
                     legacyBehavior
-                    href={`/posts/${String(parseInt(page) - 1)}`}
+                    href={`/projects/${String(parseInt(page) - 1)}`}
                   >
                     <a className="btn btn-small">
                       <span>Prev</span>
@@ -75,7 +78,7 @@ export const BlogList = ({
                 {hasMore && (
                   <Link
                     legacyBehavior
-                    href={`/posts/${String(parseInt(page) + 1)}`}
+                    href={`/projects/${String(parseInt(page) + 1)}`}
                   >
                     <a className="btn btn-small">
                       <span>Next</span>
@@ -103,7 +106,7 @@ export const BlogList = ({
                       <li key={i}>
                         <Link
                           legacyBehavior
-                          href={`/blogcategory/${createSlug(category)}/1`}
+                          href={`/${type}/${createSlug(category)}/1`}
                         >
                           <a className="clearfix hover:text-primary">
                             {category}
@@ -137,10 +140,7 @@ export const BlogList = ({
                     {recentPosts.map((post, index) => (
                       <li key={index} className="mb-4 last:mb-0">
                         <p className="mb-0">
-                          <Link
-                            legacyBehavior
-                            href={`/postdetails/${post.slug}`}
-                          >
+                          <Link legacyBehavior href={`/project/${post.slug}`}>
                             <a className="text-heading no-underline hover:text-primary hover:underline">
                               {post.title}{" "}
                             </a>

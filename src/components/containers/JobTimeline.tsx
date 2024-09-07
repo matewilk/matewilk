@@ -5,12 +5,13 @@ import { getJobExperience } from "../../fetchers";
 import { childrenAnimation } from "../../lib/motion";
 import TimelineItem from "../elements/TimelineItem";
 
-type Job = {
+export type Job = {
   id: string;
   title: string;
-  meta: string;
+  meta?: string;
   text: string;
   year: string;
+  button?: boolean;
 };
 
 const JobTimeline = async () => {

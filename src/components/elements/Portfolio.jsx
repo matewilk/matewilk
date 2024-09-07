@@ -7,6 +7,7 @@ import { Portal } from "react-portal";
 import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
 
 const Portfolio = ({
+  type,
   portfolio: {
     title,
     subtitle,
@@ -56,7 +57,7 @@ const Portfolio = ({
             </button>
           ) : null}
           {url ? (
-            <Link legacyBehavior href={slug ? `/postdetails/${slug}` : url}>
+            <Link legacyBehavior href={slug ? `/${type}/${slug}` : url}>
               <a
                 target="_blank"
                 className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
@@ -71,7 +72,7 @@ const Portfolio = ({
         <h5 className="mb-0">
           <Link
             legacyBehavior
-            href={slug ? `/postdetails/${slug}` : url ? url : ""}
+            href={slug ? `/${type}/${slug}` : url ? url : ""}
           >
             <a
               target="_blank"

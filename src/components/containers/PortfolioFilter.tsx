@@ -57,7 +57,7 @@ const PortfolioFilter = ({ data, filters }: Props) => {
       setVisiblePortfolios(response.data);
       setTotal(response.total);
     },
-    [data, limit]
+    [limit]
   );
 
   const handleLoadmore = useCallback(async () => {
@@ -92,7 +92,7 @@ const PortfolioFilter = ({ data, filters }: Props) => {
             className="col-span-6 sm:col-span-3 lg:col-span-2"
             key={portfolio.id}
           >
-            <Portfolio portfolio={portfolio} />
+            <Portfolio type="project" portfolio={portfolio} />
           </motion.div>
         ))}
       </motion.div>

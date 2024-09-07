@@ -1,6 +1,12 @@
+import { Job } from "../containers/JobTimeline";
+
+type TimelineItemProps = {
+  timeline: Job;
+};
+
 const TimelineItem = ({
   timeline: { title, meta, text, year, button = false },
-}) => {
+}: TimelineItemProps) => {
   return (
     <div className="timeline relative block items-start rounded-full border-white border-opacity-20 first:mt-0 md:flex">
       <span className="timeline-year absolute top-0 left-12 mt-7 mr-12 min-w-[115px] rounded-full bg-primary bg-opacity-10 p-1 text-center text-sm leading-none md:relative md:left-0">

@@ -20,7 +20,7 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <BlogList
-      type="posts"
+      type="projects"
       page={page}
       posts={posts}
       hasMore={hasMore}
