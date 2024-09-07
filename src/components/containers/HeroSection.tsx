@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { RiArrowDownLine } from "react-icons/ri";
-import Link from "next/link";
 
 import { Motion } from "../utils/MotionWrapper";
 import { childrenAnimation } from "../../lib/motion";
 import { Typed } from "../utils/TypedWrapper";
 import { getInformation } from "../../fetchers";
 import SocialIcons from "../elements/SocialIcons";
+import { ScrollDownBtn } from "../elements/ScrollDownBtn";
 
 export const HeroSection = async ({
   blurred = true,
@@ -98,25 +97,7 @@ export const HeroSection = async ({
               </Motion>
             </div>
           </div>
-          {scroll ? (
-            <Motion
-              type="div"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.8 }}
-              variants={childrenAnimation}
-              className="herosection-bottom absolute left-0 top-auto bottom-10 w-full justify-between text-center"
-            >
-              <Link
-                href="/#section-about"
-                className="flex cursor-pointer items-center justify-center text-xs font-medium uppercase tracking-widest transition-all hover:text-primary"
-              >
-                <RiArrowDownLine className="inline animate-bounce text-base" />
-                <span className="pl-2">Scroll Down</span>
-              </Link>
-            </Motion>
-          ) : null}
+          {scroll ? <ScrollDownBtn /> : null}
         </div>
       </div>
     </div>
