@@ -1,3 +1,5 @@
+import { Metadata, ResolvingMetadata } from "next";
+
 import {
   getAllCategories,
   getPostsByCategory,
@@ -55,3 +57,17 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
 };
 
 export default CategoryPosts;
+
+export async function generateMetadata(
+  {
+    params: { slug },
+  }: {
+    params: { slug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { title } = await parent;
+  return {
+    title: `Projects - ${title?.absolute}`,
+  };
+}
