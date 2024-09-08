@@ -59,10 +59,10 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
                       className="after:content-[','] last:after:hidden"
                     >
                       <Link
-                        legacyBehavior
                         href={`/projects/${createSlug(cat)}/1`}
+                        className="text-body hover:text-primary"
                       >
-                        <a className="text-body hover:text-primary">{cat}</a>
+                        {cat}
                       </Link>
                     </span>
                   ))}

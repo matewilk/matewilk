@@ -5,7 +5,7 @@ import {
   getPostsByCategory,
   getRecentPosts,
 } from "src/lib/blogging";
-import { BlogList } from "src/components/elements/BlogList";
+import { BlogGrid } from "src/components/elements/BlogGrid";
 
 type CategoryPostsProps = {
   params: {
@@ -44,7 +44,7 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
   ];
 
   return (
-    <BlogList
+    <BlogGrid
       type="blogs"
       breadcrumb={breadcrumb}
       page={pageNumber}
