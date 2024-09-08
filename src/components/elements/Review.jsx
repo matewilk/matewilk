@@ -1,19 +1,16 @@
 import Image from "next/image";
 import StarRatings from "react-star-ratings";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
+import { shimmer, toBase64 } from "../../lib/utils";
 
 const Review = ({ review: { name, meta, givenreview, image, text } }) => {
   return (
     <div className="review card mt-11 p-4 md:p-5">
       <div className="review-image fiximage relative -mt-14 mb-4 inline-block h-20 w-20 overflow-hidden rounded-full border-4 border-primary md:-mt-16">
         <Image
-          loader={imageLoader}
-          unoptimized={true}
           src={image}
           alt="user image"
           height={80}
           width={80}
-          layout="responsive"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(80, 80))}`}
         />

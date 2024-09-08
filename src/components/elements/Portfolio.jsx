@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
 import { Portal } from "react-portal";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
+import { shimmer, toBase64 } from "../../lib/utils";
 
 const Portfolio = ({
+  type,
   portfolio: {
     title,
     subtitle,
@@ -25,13 +26,10 @@ const Portfolio = ({
       <div className="portfolio-top relative overflow-hidden">
         <div className="portfolio-image fiximage blur-0 filter transition-all duration-500 group-hover:blur">
           <Image
-            loader={imageLoader}
-            unoptimized={true}
             src={coverimage}
             height={384}
             width={550}
             alt={title}
-            layout="responsive"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(550, 384)
@@ -56,20 +54,22 @@ const Portfolio = ({
             </button>
           ) : null}
           {url ? (
-            <Link href={slug ? `/postdetails/${slug}` : url}>
-              <a
-                target="_blank"
-                className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
-              >
-                <RiExternalLinkLine />
-              </a>
+            <Link
+              href={slug ? `/${type}/${slug}` : url}
+              target="_blank"
+              className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
+            >
+              <RiExternalLinkLine />
             </Link>
           ) : null}
         </div>
       </div>
       <div className="portfolio-content mt-4">
         <h5 className="mb-0">
-          <Link href={slug ? `/postdetails/${slug}` : url ? url : ""}>
+          <Link
+            legacyBehavior
+            href={slug ? `/${type}/${slug}` : url ? url : ""}
+          >
             <a
               target="_blank"
               className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"

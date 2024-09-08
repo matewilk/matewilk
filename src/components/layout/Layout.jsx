@@ -6,7 +6,7 @@ import Header from "./Header";
 import { RiArrowUpSLine } from "react-icons/ri";
 import useEventListener from "../../hooks/useEventListener";
 
-const Layout = ({ children, blurred }) => {
+const Layout = ({ children, blurred = true }) => {
   const [backToTop, setBackToTop] = useState(false);
 
   const scroll = Scroll.animateScroll;

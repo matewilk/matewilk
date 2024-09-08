@@ -1,4 +1,4 @@
-import Link from "next/link";
+"use client";
 import { useState } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import { Link as ScrollLink } from "react-scroll";

@@ -8,11 +8,11 @@ thumb: "/images/blog/sm/snowflake-thumb.png"
 
 ## New Relic Snowflake integration
 
-[GitHub](https://newrelic.com/blog/how-to-relic/nextjs-monitor-application-data) - for the full source code
+[GitHub](https://github.com/newrelic-experimental/newrelic-snowflake-integration) - for the full source code
 
 This project started as an open source contribution to the New Relic community and thanks to its popularity is now a Community Plus project supported by New Relic.
 
-It is a New Relic integration with Snowflake to monitor query performance, logins, potential security incidents, optimise warehouse and cloud credit costs, capture any data stored in Snowflake for real-time alerting and reporting. It comes with out of the box queries to capture a good range of performance related metrics. It is easily extendible to create custom queries to capture any other metrics that are not covered by default. 
+It is a New Relic integration with Snowflake to monitor query performance, logins, potential security incidents, optimise warehouse and cloud credit costs, capture any data stored in Snowflake for real-time alerting and reporting. It comes with out of the box queries to capture a good range of performance related metrics. It is easily extendible to create custom queries to capture any other metrics that are not covered by default.
 
 ### Main features
 
@@ -32,7 +32,7 @@ It is a New Relic integration with Snowflake to monitor query performance, login
   - werehouse metering
 - Yaml configuration file to easily set up the integration
   - with obfuscation of sensitive data
-  - supports authentication 
+  - supports authentication
     - with username and password
     - with OAuth
 - Releases for Windows, Linux and Mac

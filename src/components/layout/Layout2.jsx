@@ -1,3 +1,4 @@
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { RiArrowRightLine } from "react-icons/ri";
@@ -5,7 +6,7 @@ import FullscreenMenu from "./FullscreenMenu";
 import MobileFullmenu from "./MobileFullmenu";
 import Sidemenu from "./Sidemenu";
 
-const Layout2 = ({ children, blurred }) => {
+const Layout2 = ({ children, blurred = true }) => {
   const [fullMenu, setFullMenu] = useState(false);
   const [fullMobileMenu, setFullMobileMenu] = useState(false);
 
