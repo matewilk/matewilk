@@ -5,7 +5,7 @@ import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
 import { useState } from "react";
 
 import { createSlug } from "../../lib";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
+import { shimmer, toBase64 } from "../../lib/utils";
 import { BlogPost } from "../../lib/blogging";
 
 const Blog = ({
@@ -27,13 +27,11 @@ const Blog = ({
       <div className="blog-top relative mb-4 overflow-hidden">
         <div className="blog-image fiximage blur-0 filter transition-all duration-500 group-hover:blur">
           <Image
-            loader={imageLoader}
-            unoptimized={true}
             src={thumb}
             height={225}
             width={400}
             alt={title}
-            // objectFit="cover"
+            objectFit="cover"
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(400, 225)

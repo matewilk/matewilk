@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { createSlug } from "src/lib";
 import { getSinglePost } from "src/lib/blogging";
 import Breadcrumb from "src/components/elements/Breadcrumb";
+import { shimmer, toBase64 } from "src/lib/utils";
 
 // import Comments from "../../components/utils/Comments";
 
@@ -37,12 +38,15 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
           <div className="post-header mb-8">
             <div className="fiximage mb-5 overflow-hidden rounded border border-white border-opacity-20">
               <Image
-                unoptimized={true}
                 src={cover}
                 height={650}
                 width={1350}
                 alt="Blog Image"
                 objectFit="cover"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(1350, 650)
+                )}`}
               />
             </div>
             <div className="flex flex-wrap justify-between gap-x-4">

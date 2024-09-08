@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumb from "../components/elements/Breadcrumb";
 import { FC } from "react";
 import { Metadata } from "next";
+import { shimmer, toBase64 } from "src/lib/utils";
 
 const NotFound: FC = () => {
   return (
@@ -12,11 +13,15 @@ const NotFound: FC = () => {
         <div className="container mx-auto">
           <div className="not-found text-center">
             <Image
-              unoptimized={true}
               src="/images/notfound.svg"
               height={500}
               width={500}
               alt="not found"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(500, 500)
+              )}`}
             />
             <div>
               <Link legacyBehavior href="/">

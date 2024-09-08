@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
 import { Portal } from "react-portal";
-import { imageLoader, shimmer, toBase64 } from "../../lib/utils";
+import { shimmer, toBase64 } from "../../lib/utils";
 
 const Portfolio = ({
   type,
@@ -26,8 +26,6 @@ const Portfolio = ({
       <div className="portfolio-top relative overflow-hidden">
         <div className="portfolio-image fiximage blur-0 filter transition-all duration-500 group-hover:blur">
           <Image
-            loader={imageLoader}
-            unoptimized={true}
             src={coverimage}
             height={384}
             width={550}

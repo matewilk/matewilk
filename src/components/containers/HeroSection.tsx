@@ -6,6 +6,7 @@ import { Typed } from "../utils/TypedWrapper";
 import { getInformation } from "../../fetchers";
 import SocialIcons from "../elements/SocialIcons";
 import { ScrollDownBtn } from "../elements/ScrollDownBtn";
+import { shimmer, toBase64 } from "src/lib/utils";
 
 export const HeroSection = async ({
   blurred = true,
@@ -41,12 +42,15 @@ export const HeroSection = async ({
                 <span className="herosection-imageanimation absolute left-0 top-0 z-10 h-full w-full animate-spin rounded-full bg-gradient-to-tr from-primary to-transparent"></span>
                 <div className="herosection-image fiximage relative z-20 inline-block h-[150px] w-[150px] overflow-hidden rounded-full border-6 border-primary border-opacity-10 align-middle">
                   <Image
-                    // loader={imageLoader}
-                    unoptimized={true}
                     src={data.thumbImage}
                     alt={data.fullName}
                     height={200}
                     width={200}
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(200, 200)
+                    )}`}
                   />
                 </div>
               </Motion>

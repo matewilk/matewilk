@@ -3,6 +3,7 @@ import { childrenAnimation } from "../../lib/motion";
 import { getInformation } from "../../fetchers";
 
 import { Motion } from "../utils/MotionWrapper";
+import { shimmer, toBase64 } from "src/lib/utils";
 
 const AboutSection = async () => {
   const data = await getInformation();
@@ -27,11 +28,15 @@ const AboutSection = async () => {
             <span className="absolute -left-2.5 top-auto z-10 h-10 w-2.5 animate-ledgerbottomtop rounded-full bg-gradient-to-t from-transparent to-primary"></span>
             <span className="absolute left-auto -right-2.5 z-10 h-10 w-2.5 animate-ledgertopbottom rounded-full bg-gradient-to-b from-transparent to-primary"></span>
             <Image
-              unoptimized={true}
               src={data.largeImage}
-              height={422}
-              width={660}
+              height={720}
+              width={1090}
               alt={data.fullName}
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(1090, 720)
+              )}`}
             />
           </div>
         </Motion>
