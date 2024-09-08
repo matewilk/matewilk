@@ -32,7 +32,7 @@ const AboutSection = async () => {
               height={720}
               width={1090}
               alt={data.fullName}
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
                 shimmer(1090, 720)

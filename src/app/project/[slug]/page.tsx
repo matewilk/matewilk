@@ -42,7 +42,7 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
                 height={650}
                 width={1350}
                 alt="Blog Image"
-                objectFit="cover"
+                style={{ objectFit: "cover" }}
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(1350, 650)

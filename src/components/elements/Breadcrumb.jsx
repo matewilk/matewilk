@@ -19,10 +19,11 @@ const Breadcrumb = ({ title, paths, blurred = true }) => {
                 {paths.map((path) => (
                   <li className="inline-block capitalize" key={path.name}>
                     {path.link ? (
-                      <Link legacyBehavior href={path.link}>
-                        <a className="text-heading hover:text-primary">
-                          {path.name}
-                        </a>
+                      <Link
+                        href={path.link}
+                        className="text-heading hover:text-primary"
+                      >
+                        {path.name}
                       </Link>
                     ) : (
                       path.name

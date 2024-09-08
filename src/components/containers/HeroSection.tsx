@@ -46,7 +46,7 @@ export const HeroSection = async ({
                     alt={data.fullName}
                     height={200}
                     width={200}
-                    objectFit="cover"
+                    style={{ objectFit: "cover" }}
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(
                       shimmer(200, 200)

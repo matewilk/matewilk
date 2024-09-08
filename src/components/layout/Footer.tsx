@@ -16,10 +16,11 @@ const Footer = async () => {
           </div>
           <p className="mb-0 w-full md:w-auto">
             &copy; {new Date().getFullYear()}, All right reserved
-            <Link legacyBehavior href="/">
-              <a className="pl-1.5 font-medium text-heading no-underline hover:text-primary">
-                Mateusz Wilk Ltd
-              </a>
+            <Link
+              href="/"
+              className="pl-1.5 font-medium text-heading no-underline hover:text-primary"
+            >
+              Mateusz Wilk Ltd
             </Link>
           </p>
         </div>

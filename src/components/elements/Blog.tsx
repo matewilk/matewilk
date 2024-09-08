@@ -31,7 +31,7 @@ const Blog = ({
             height={225}
             width={400}
             alt={title}
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(400, 225)
@@ -56,13 +56,12 @@ const Blog = ({
             </button>
           ) : null}
           {link ? (
-            <Link legacyBehavior href={link}>
-              <a
-                target="_blank"
-                className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
-              >
-                <RiExternalLinkLine />
-              </a>
+            <Link
+              href={link}
+              target="_blank"
+              className="inline-flex h-10 min-h-0 w-10 items-center justify-center rounded-full bg-primary p-0 text-center text-lg text-grey"
+            >
+              <RiExternalLinkLine />
             </Link>
           ) : null}
         </div>
@@ -83,21 +82,23 @@ const Blog = ({
         </div>
       </div>
       <h5 className="mb-0">
-        <Link legacyBehavior href={link ? link : `/${type}/${slug}`}>
-          <a
-            target="_blank"
-            className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
-            title={title}
-          >
-            {title}
-          </a>
+        <Link
+          href={link ? link : `/${type}/${slug}`}
+          target="_blank"
+          className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
+          title={title}
+        >
+          {title}
         </Link>
       </h5>
       <div className="flex list-none gap-1.5 text-sm">
         {category.map((cat, i) => (
           <span key={i} className="after:content-[','] last:after:hidden">
-            <Link legacyBehavior href={`/${type}s/${createSlug(cat)}/1`}>
-              <a className=" hover:text-primary">{cat}</a>
+            <Link
+              href={`/${type}s/${createSlug(cat)}/1`}
+              className=" hover:text-primary"
+            >
+              {cat}
             </Link>
           </span>
         ))}

@@ -24,14 +24,13 @@ const MobileNavigation = ({ changeState }) => {
         <ul className="mb-0 list-none pl-0">
           <li className="block">
             {checkroute ? (
-              <Link legacyBehavior href="/">
-                <a
-                  className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                  onClick={() => handleClick()}
-                >
-                  Home
-                  <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-                </a>
+              <Link
+                href="/"
+                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+                onClick={() => handleClick()}
+              >
+                Home
+                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </Link>
             ) : (
               <ScrollLink
@@ -51,14 +50,13 @@ const MobileNavigation = ({ changeState }) => {
           </li>
           <li className="block">
             {checkroute ? (
-              <Link legacyBehavior href="/">
-                <a
-                  className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                  onClick={() => handleClick()}
-                >
-                  About
-                  <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-                </a>
+              <Link
+                href="/"
+                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+                onClick={() => handleClick()}
+              >
+                About
+                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </Link>
             ) : (
               <ScrollLink
@@ -78,14 +76,13 @@ const MobileNavigation = ({ changeState }) => {
           </li>
           <li className="block">
             {checkroute ? (
-              <Link legacyBehavior href="/">
-                <a
-                  className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                  onClick={() => handleClick()}
-                >
-                  Resume
-                  <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-                </a>
+              <Link
+                href="/"
+                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+                onClick={() => handleClick()}
+              >
+                Resume
+                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </Link>
             ) : (
               <ScrollLink
@@ -105,14 +102,13 @@ const MobileNavigation = ({ changeState }) => {
           </li>
           <li className="block">
             {checkroute ? (
-              <Link legacyBehavior href="/">
-                <a
-                  className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                  onClick={() => handleClick()}
-                >
-                  Projects
-                  <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-                </a>
+              <Link
+                href="/"
+                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+                onClick={() => handleClick()}
+              >
+                Projects
+                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </Link>
             ) : (
               <ScrollLink
@@ -131,26 +127,24 @@ const MobileNavigation = ({ changeState }) => {
             )}
           </li>
           <li className="block">
-            <Link legacyBehavior href="/blogs/1">
-              <a
-                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                onClick={() => handleClick()}
-              >
-                Blog
-                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-              </a>
+            <Link
+              href="/blogs/1"
+              className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+              onClick={() => handleClick()}
+            >
+              Blog
+              <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
             </Link>
           </li>
           <li className="block">
             {checkroute ? (
-              <Link legacyBehavior href="/">
-                <a
-                  className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
-                  onClick={() => handleClick()}
-                >
-                  Contact
-                  <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
-                </a>
+              <Link
+                href="/"
+                className="group relative inline-block cursor-pointer py-2 text-lg uppercase tracking-wider text-heading before:text-primary"
+                onClick={() => handleClick()}
+              >
+                Contact
+                <span className="absolute left-0 top-auto bottom-5 inline-block h-px w-full origin-top-right scale-0 bg-primary align-middle transition-transform duration-500 group-hover:origin-top-left group-hover:scale-100"></span>
               </Link>
             ) : (
               <ScrollLink

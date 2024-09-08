@@ -17,17 +17,15 @@ const NotFound: FC = () => {
               height={500}
               width={500}
               alt="not found"
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
                 shimmer(500, 500)
               )}`}
             />
             <div>
-              <Link legacyBehavior href="/">
-                <a className="btn btn-large">
-                  <span>Back to home</span>
-                </a>
+              <Link href="/" className="btn btn-large">
+                <span>Back to home</span>
               </Link>
             </div>
           </div>
