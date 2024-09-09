@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { RiExternalLinkLine, RiImageLine, RiVideoLine } from "react-icons/ri";
 import { Portal } from "react-portal";
-import { shimmer, toBase64 } from "../../lib/utils";
+
+import { shimmer, toBase64 } from "src/lib/utils";
 
 const Portfolio = ({
   type,
@@ -28,11 +29,11 @@ const Portfolio = ({
           <Image
             src={coverimage}
             height={384}
-            width={550}
+            width={600}
             alt={title}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(550, 384)
+              shimmer(600, 384)
             )}`}
           />
         </div>
@@ -67,16 +68,12 @@ const Portfolio = ({
       <div className="portfolio-content mt-4">
         <h5 className="mb-0">
           <Link
-            legacyBehavior
             href={slug ? `/${type}/${slug}` : url ? url : ""}
+            target="_blank"
+            className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
+            title={title}
           >
-            <a
-              target="_blank"
-              className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
-              title={title}
-            >
-              {title}
-            </a>
+            {title}
           </Link>
         </h5>
         <p>{subtitle}</p>

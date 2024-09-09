@@ -5,7 +5,7 @@ import {
   getPostsByPage,
   getRecentPosts,
 } from "src/lib/blogging";
-import { BlogList } from "src/components/elements/BlogList";
+import { BlogGrid } from "src/components/elements/BlogGrid";
 
 const Posts = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
@@ -32,7 +32,7 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
   ];
 
   return (
-    <BlogList
+    <BlogGrid
       type="projects"
       breadcrumb={breadcrumb}
       page={page}

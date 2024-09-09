@@ -39,10 +39,10 @@ const ContactSection = async () => {
                 {data.phoneNumbers.map((number, index) => (
                   <p className="mb-0" key={index}>
                     <Link
-                      legacyBehavior
                       href={`tel:${number.split("-").join("")}`}
+                      className="no-underline"
                     >
-                      <a className="no-underline">{number}</a>
+                      {number}
                     </Link>
                   </p>
                 ))}

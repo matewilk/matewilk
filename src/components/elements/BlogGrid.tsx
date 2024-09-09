@@ -1,10 +1,12 @@
 import Link from "next/link";
+
 import Blog from "src/components/elements/Blog";
 import Breadcrumb from "src/components/elements/Breadcrumb";
-import { createSlug } from "src/lib";
 import { BlogPost } from "src/lib/blogging";
 import { childrenAnimation } from "src/lib/motion";
 import { Motion } from "src/components/utils/MotionWrapper";
+import { Categories } from "src/components/elements/Categories";
+import { RecentBlogs } from "./RecentBlogs";
 
 type PostsProps = {
   type: "projects" | "blogs";
@@ -16,7 +18,7 @@ type PostsProps = {
   recentPosts: Array<BlogPost>;
 };
 
-export const BlogList = ({
+export const BlogGrid = ({
   type,
   breadcrumb,
   page,
@@ -25,7 +27,6 @@ export const BlogList = ({
   categories,
   recentPosts,
 }: PostsProps) => {
-  const uniqueCategories = [...new Set(categories)];
   return (
     <>
       <Breadcrumb
@@ -60,22 +61,18 @@ export const BlogList = ({
               <div className="flex gap-3 pt-10 text-center">
                 {page !== "1" && (
                   <Link
-                    legacyBehavior
                     href={`/${type}/${String(parseInt(page) - 1)}`}
+                    className="btn btn-small"
                   >
-                    <a className="btn btn-small">
-                      <span>Prev</span>
-                    </a>
+                    <span>Prev</span>
                   </Link>
                 )}
                 {hasMore && (
                   <Link
-                    legacyBehavior
                     href={`/${type}/${String(parseInt(page) + 1)}`}
+                    className="btn btn-small"
                   >
-                    <a className="btn btn-small">
-                      <span>Next</span>
-                    </a>
+                    <span>Next</span>
                   </Link>
                 )}
               </div>
@@ -91,31 +88,7 @@ export const BlogList = ({
                   variants={childrenAnimation}
                   className="widget widget-category card rounded p-4"
                 >
-                  <h5 className="border-b border-white border-opacity-20 pb-2 font-medium text-primary">
-                    Categories
-                  </h5>
-                  <ul className="styledlist mb-0 list-none pl-0">
-                    {uniqueCategories.map((category, i) => (
-                      <li key={i}>
-                        <Link
-                          legacyBehavior
-                          href={`/${type}/${createSlug(category)}/1`}
-                        >
-                          <a className="clearfix hover:text-primary">
-                            {category}
-                            <span className="float-right">
-                              (
-                              {
-                                categories.filter((cat) => cat === category)
-                                  .length
-                              }
-                              )
-                            </span>
-                          </a>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <Categories categories={categories} type={type} />
                 </Motion>
                 <Motion
                   type="div"
@@ -126,39 +99,7 @@ export const BlogList = ({
                   variants={childrenAnimation}
                   className="widget widget-recentpost card rounded p-4"
                 >
-                  <h5 className="border-b border-white border-opacity-20 pb-2 font-medium text-primary">
-                    {type === "projects" ? "Latest Projects" : "Recent Blogs"}
-                  </h5>
-                  <ul className="mb-0 list-none pl-0">
-                    {recentPosts.map((post, index) => (
-                      <li key={index} className="mb-4 last:mb-0">
-                        <p className="mb-0">
-                          <Link
-                            legacyBehavior
-                            href={
-                              type === "blogs"
-                                ? `${post.link}`
-                                : `/project/${post.slug}`
-                            }
-                          >
-                            <a className="text-heading no-underline hover:text-primary hover:underline">
-                              {post.title}{" "}
-                            </a>
-                          </Link>
-                        </p>
-                        <small className="text-body">
-                          {`${new Date(post.date).toLocaleDateString("en-us", {
-                            month: "short",
-                          })} ${new Date(post.date).toLocaleDateString(
-                            "en-us",
-                            {
-                              day: "2-digit",
-                            }
-                          )}, ${new Date(post.date).getFullYear()}`}
-                        </small>
-                      </li>
-                    ))}
-                  </ul>
+                  <RecentBlogs posts={recentPosts} type={type} />
                 </Motion>
               </div>
             </div>

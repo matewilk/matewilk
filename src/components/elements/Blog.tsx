@@ -29,12 +29,12 @@ const Blog = ({
           <Image
             src={thumb}
             height={225}
-            width={400}
+            width={600}
             alt={title}
             style={{ objectFit: "cover" }}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(400, 225)
+              shimmer(600, 225)
             )}`}
           />
         </div>
@@ -91,7 +91,7 @@ const Blog = ({
           {title}
         </Link>
       </h5>
-      <div className="flex list-none gap-1.5 text-sm">
+      <div className="flex list-none flex-wrap gap-1.5 text-sm">
         {category.map((cat, i) => (
           <span key={i} className="after:content-[','] last:after:hidden">
             <Link
