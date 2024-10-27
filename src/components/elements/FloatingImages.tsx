@@ -12,7 +12,7 @@ export const FloatingImages = ({ images }: { images: string[] }) => {
           <motion.div
             key={index}
             className={`absolute top-0 transform shadow-lg hover:z-10 hover:shadow-2xl`}
-            style={{ rotate: `${index * 6 - 6}deg` }}
+            style={{ rotate: `${index * 6 - 1}deg` }}
             whileHover={{ scale: 1.1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
