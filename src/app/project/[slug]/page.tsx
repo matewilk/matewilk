@@ -1,12 +1,11 @@
 import { marked } from "marked";
-import Image from "next/image";
 import Link from "next/link";
 import { Metadata, ResolvingMetadata } from "next";
 
 import { createSlug } from "src/lib";
 import { getSinglePost } from "src/lib/blogging";
 import Breadcrumb from "src/components/elements/Breadcrumb";
-import { shimmer, toBase64 } from "src/lib/utils";
+import { FloatingImages } from "src/components/elements/FloatingImages";
 
 // import Comments from "../../components/utils/Comments";
 
@@ -36,19 +35,7 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
       <div className="single-post py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto">
           <div className="post-header mb-8">
-            <div className="fiximage mb-5 overflow-hidden rounded border border-white border-opacity-20">
-              <Image
-                src={cover}
-                height={650}
-                width={1350}
-                alt="Blog Image"
-                style={{ objectFit: "cover" }}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(1350, 650)
-                )}`}
-              />
-            </div>
+            <FloatingImages images={[cover, cover]} />
             <div className="flex flex-wrap justify-between gap-x-4">
               <div className="mb-0 flex gap-2 text-heading">
                 Category :{" "}
