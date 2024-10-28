@@ -1,16 +1,17 @@
 import Link from "next/link";
 
-import Blog from "src/components/elements/Blog";
+import BlogTile from "src/components/elements/BlogTile";
 import Breadcrumb from "src/components/elements/Breadcrumb";
 import { BlogPost } from "src/lib/blogging";
 import { childrenAnimation } from "src/lib/motion";
 import { Motion } from "src/components/utils/MotionWrapper";
 import { Categories } from "src/components/elements/Categories";
 import { RecentBlogs } from "./RecentBlogs";
+import { BreadcrumbPath } from "src/components/elements/Breadcrumb";
 
-type PostsProps = {
+type BlogGridProps = {
   type: "projects" | "blogs";
-  breadcrumb: Array<{ name: string; link: string }>;
+  breadcrumb: Array<BreadcrumbPath>;
   page: string;
   posts: Array<BlogPost>;
   hasMore: boolean;
@@ -26,7 +27,7 @@ export const BlogGrid = ({
   hasMore,
   categories,
   recentPosts,
-}: PostsProps) => {
+}: BlogGridProps) => {
   return (
     <>
       <Breadcrumb
@@ -51,7 +52,7 @@ export const BlogGrid = ({
                       className="col-span-2 sm:col-span-1"
                       key={index}
                     >
-                      <Blog
+                      <BlogTile
                         type={type === "projects" ? "project" : "blog"}
                         {...post}
                       />

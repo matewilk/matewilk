@@ -2,7 +2,7 @@
 import { useCallback, useRef, useState, useEffect } from "react";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import Blog from "../elements/Blog";
+import BlogTile from "../elements/BlogTile";
 import { Spinner } from "../utils";
 
 const BlogSection = ({ posts }) => {
@@ -58,7 +58,7 @@ const BlogSection = ({ posts }) => {
           posts.map((post, index) => (
             <SwiperSlide key={index}>
               <div className="slider-item">
-                <Blog {...post} />
+                <BlogTile {...post} />
               </div>
             </SwiperSlide>
           ))}

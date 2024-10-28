@@ -80,9 +80,9 @@ const getPostsPath = (urlPath = "posts") => {
 };
 
 // Get single post data
-const getSinglePost = (slug: string) => {
+const getSinglePost = (slug: string, urlPath = "posts") => {
   const post = fs.readFileSync(
-    path.join(process.cwd(), "src/posts", slug + ".md"),
+    path.join(process.cwd(), `src/${urlPath}`, slug + ".md"),
     "utf-8"
   );
   const { data: frontmatter, content } = matter(post);

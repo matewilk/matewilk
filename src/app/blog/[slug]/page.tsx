@@ -5,7 +5,7 @@ import Breadcrumb from "src/components/elements/Breadcrumb";
 import { Article } from "src/components/elements/Article";
 
 const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
-  const post = getSinglePost(slug);
+  const post = getSinglePost(slug, "blogs");
   const { title, date, cover, category, content } = post;
 
   return (
@@ -18,8 +18,8 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
             link: "/",
           },
           {
-            name: "Projects",
-            link: "/projects/1",
+            name: "Blogs",
+            link: "/blogs/1",
           },
           {
             name: title,
@@ -47,7 +47,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { title: parentTitle } = await parent;
-  const post = getSinglePost(slug);
+  const post = getSinglePost(slug, "blogs");
   const { title } = post;
   return {
     title: `${title} - ${parentTitle?.absolute}`,

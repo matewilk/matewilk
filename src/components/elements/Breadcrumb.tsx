@@ -1,6 +1,17 @@
 import Link from "next/link";
 
-const Breadcrumb = ({ title, paths, blurred = true }) => {
+export type BreadcrumbPath = {
+  name: string;
+  link?: string;
+};
+
+type BreadcrumbType = {
+  title: string;
+  paths: Array<BreadcrumbPath>;
+  blurred?: boolean;
+};
+
+const Breadcrumb = ({ title, paths, blurred = true }: BreadcrumbType) => {
   return (
     <div className="breadcrumb-wrap relative">
       {!blurred && (
