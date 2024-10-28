@@ -8,7 +8,7 @@ import { createSlug } from "../../lib";
 import { shimmer, toBase64 } from "../../lib/utils";
 import { BlogPost } from "../../lib/blogging";
 
-const Blog = ({
+const BlogTile = ({
   type,
   title,
   date,
@@ -28,13 +28,13 @@ const Blog = ({
         <div className="blog-image fiximage blur-0 filter transition-all duration-500 group-hover:blur">
           <Image
             src={thumb}
-            height={225}
+            height={525}
             width={600}
             alt={title}
             style={{ objectFit: "cover" }}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(600, 225)
+              shimmer(600, 525)
             )}`}
           />
         </div>
@@ -107,4 +107,4 @@ const Blog = ({
   );
 };
 
-export default Blog;
+export default BlogTile;

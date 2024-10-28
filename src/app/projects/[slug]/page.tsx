@@ -27,7 +27,6 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
     },
     {
       name: "Projects",
-      link: "",
     },
   ];
 

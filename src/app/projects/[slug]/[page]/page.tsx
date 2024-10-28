@@ -39,7 +39,6 @@ const CategoryPosts = ({ params: { slug, page } }: CategoryPostsProps) => {
     },
     {
       name: slug,
-      link: "",
     },
   ];
 
