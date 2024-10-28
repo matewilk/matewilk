@@ -8,7 +8,7 @@ import { shimmer, toBase64 } from "src/lib/utils";
 const NotFound: FC = () => {
   return (
     <section className="section-notfound">
-      <Breadcrumb title="Page not found" blurred={false} paths={false} />
+      <Breadcrumb title="Page not found" blurred={false} paths={[]} />
       <div className="not-found-wrapper pb-24 pt-10 lg:pt-14 lg:pb-28 xl:pt-16 xl:pb-32">
         <div className="container mx-auto">
           <div className="not-found text-center">
