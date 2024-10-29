@@ -8,12 +8,13 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build",
+    "build": "contentlayer build && next build",
     "lint": "next lint",
     "export": "next build && next export"
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+    "contentlayer": "^0.3.4",
     "disqus-react": "^1.1.2",
     "framer-motion": "^11.5.4",
     "fslightbox-react": "^1.6.2-2",
@@ -21,6 +22,7 @@
     "gsap": "^3.10.4",
     "marked": "^4.0.14",
     "next": "^14.2.7",
+    "next-contentlayer": "^0.3.4",
     "next-pwa": "^5.4.6",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
@@ -35,9 +37,13 @@
     "react-star-ratings": "^2.3.0",
     "react-svg": "^14.1.18",
     "react-typed": "^2.0.12",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.14.0",
+    "rehype-slug": "^6.0.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "sharp": "^0.30.4",
+    "shiki": "^1.22.2",
     "swiper": "^8.1.4"
   },
   "devDependencies": {

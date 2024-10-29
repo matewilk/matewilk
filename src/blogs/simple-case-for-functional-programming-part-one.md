@@ -76,7 +76,7 @@ While straightforward, this implementation lacks comprehensive error handling. T
 
 To address error handling more effectively, we can use a `Result` type to represent both success and error cases. The `Result` type is a common functional programming pattern that allows to explicitly handle success and error cases.
 
-We modify `UrlRepository` interface to user a `Result` type"
+We modify `UrlRepository` interface to user a `Result` type:
 
 ```typescript
 export interface UrlRepository {
