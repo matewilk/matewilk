@@ -27,12 +27,10 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/app/**/*.ts",
-    ".next/types/**/*.ts",
-    "src/components/**/*.ts",
-    "src/components/layout/Header.jsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
