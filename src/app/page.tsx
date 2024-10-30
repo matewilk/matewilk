@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 
-import { getPostsByPage } from "../lib/blogging";
+import { getBlogsByPage } from "../lib/blogging";
 import { Section } from "../components/layout/ScrollSection";
 import { HeroSection } from "../components/containers/HeroSection";
 import SectionHeading from "../components/utils/SectionHeading";
@@ -15,7 +15,7 @@ import BlogSection from "../components/containers/BlogSection";
 import ContactSection from "../components/containers/ContactSection";
 
 export default async function Home() {
-  const { posts } = getPostsByPage({ page: 1, limit: 10 });
+  const { blogs } = getBlogsByPage({ page: 1, limit: 10 });
   return (
     <div className="container mx-auto">
       <Section name="section-home" className="hero-section">
@@ -75,7 +75,7 @@ export default async function Home() {
         className="reviews-section pt-23 lg:pt-28 xl:pt-32"
       >
         <SectionHeading title="Latest Blogs" watermark="Blog" />
-        <BlogSection posts={posts} />
+        <BlogSection blogs={blogs} />
       </Section>
 
       <Section

@@ -1,6 +1,3 @@
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
 import { createSlug, filterPostsByPage, sortPostByDate } from ".";
 import { allBlogs, Blog, allProjects, Project } from "contentlayer/generated";
 
@@ -12,36 +9,21 @@ export type BlogPost = {
   category: Array<string>;
   cover: string;
   thumb: string;
-  link: string;
+  link?: string;
   slug: string;
-  imagegallery: Array<string>;
-  videogallery: Array<string>;
+  imagegallery?: Array<string>;
+  videogallery?: Array<string>;
   type?: "project" | "blog";
 };
 
 // Get all post
-const getAllPosts = (urlPath: string): Array<string> => {
-  return fs.readdirSync(path.join(process.cwd(), `src/${urlPath}`));
+const getAllPosts = (urlPath: string = "posts"): Array<Blog | Project> => {
+  return urlPath === "posts" ? allProjects : allBlogs;
 };
 
 // Get all posts data
-const getAllPostsData = (urlPath: string): Array<BlogPost> => {
-  const files = getAllPosts(urlPath);
-  const posts = files.map((filename) => {
-    const slug = filename.replace(/\.(md|mdx)$/, "");
-
-    const markdownWithMeta = fs.readFileSync(
-      path.join(process.cwd(), `src/${urlPath}`, filename),
-      "utf-8"
-    );
-
-    const { data: frontmatter } = matter(markdownWithMeta);
-
-    return {
-      slug,
-      ...frontmatter,
-    } as BlogPost;
-  });
+const getAllPostsData = (urlPath: string): Array<Blog | Project> => {
+  const posts = getAllPosts(urlPath);
   return posts.sort(sortPostByDate);
 };
 
@@ -61,7 +43,7 @@ const getPostsByPage = ({
 
   return {
     posts,
-    hasMore: end < allBlogs.length,
+    hasMore: end < allProjects.length,
   };
 };
 
@@ -121,33 +103,6 @@ const getAllCategories = (urlPath = "posts") => {
   return categories.flat();
 };
 
-// Get category paths (for nextjs getStaticPaths)
-const getCategoryPaths = (urlPath = "posts") => {
-  const allPosts = getAllPostsData(urlPath);
-  const allCategories = getAllCategories(urlPath);
-  const categories = [...new Set(allCategories)];
-  const paths = categories.map((category) => {
-    const filteredPosts = allPosts.filter((post) => {
-      const temp = post.category.map((cat) => createSlug(cat));
-      return temp.includes(category.toLowerCase());
-    });
-    const pages = Math.ceil(filteredPosts.length / LIMIT);
-
-    let tempPath: Array<{ params: { slug: string; page: string } }> = [];
-    for (let i = 1; i <= pages; i++) {
-      tempPath.push({
-        params: {
-          slug: category.toLowerCase(),
-          page: String(i),
-        },
-      });
-    }
-    return tempPath;
-  });
-
-  return paths.flat();
-};
-
 // Get all posts by category
 const getPostsByCategory = ({
   urlPath = "posts",
@@ -186,6 +141,5 @@ export {
   getPostsByCategory,
   getSinglePost,
   getAllCategories,
-  getCategoryPaths,
   getRecentPosts,
 };

@@ -18,9 +18,7 @@
     "disqus-react": "^1.1.2",
     "framer-motion": "^11.5.4",
     "fslightbox-react": "^1.6.2-2",
-    "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",
-    "marked": "^4.0.14",
     "next": "^14.2.7",
     "next-contentlayer": "^0.3.4",
     "next-pwa": "^5.4.6",
@@ -40,8 +38,6 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.14.0",
     "rehype-slug": "^6.0.0",
-    "remark": "^14.0.2",
-    "remark-html": "^15.0.1",
     "sharp": "^0.30.4",
     "shiki": "^1.22.2",
     "swiper": "^8.1.4"

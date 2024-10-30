@@ -5,7 +5,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import BlogTile from "../elements/BlogTile";
 import { Spinner } from "../utils";
 
-const BlogSection = ({ posts }) => {
+const BlogSection = ({ blogs }) => {
   const [mounted, setMounted] = useState(false);
   const sliderRef = useRef<SwiperRef>(null);
 
@@ -29,7 +29,7 @@ const BlogSection = ({ posts }) => {
         <Spinner />
       </div>
     );
-  if (!posts) return null;
+  if (!blogs) return null;
 
   return (
     <div className="swiper-holder">
@@ -54,11 +54,17 @@ const BlogSection = ({ posts }) => {
           },
         }}
       >
-        {posts &&
-          posts.map((post, index) => (
+        {blogs &&
+          blogs.map((blog, index) => (
             <SwiperSlide key={index}>
               <div className="slider-item">
-                <BlogTile {...post} />
+                <BlogTile
+                  {...{
+                    ...blog,
+                    slug: blog._raw.sourceFileName.replace(".md", ""),
+                    type: "blog",
+                  }}
+                />
               </div>
             </SwiperSlide>
           ))}
