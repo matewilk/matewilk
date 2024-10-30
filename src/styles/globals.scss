@@ -692,40 +692,77 @@
 }
 
 // Rehype Pretty
-pre {
-  @apply max-h-fit overflow-x-auto rounded-xl bg-transparent p-0;
-}
+.post-body {
+  p {
+    @apply py-2 text-lg text-slate-300;
+  }
 
-// multi-line code block
-pre code {
-  @apply bg-opacity-90 p-5;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-4 mb-2 text-lg;
+  }
 
-pre [data-line] {
-  padding: 0 0.5rem;
-}
+  h1 {
+    @apply text-3xl font-bold;
+  }
 
-code[data-line-numbers] {
-  counter-reset: line;
-}
+  h2 {
+    @apply text-2xl font-semibold;
+  }
 
-code[data-line-numbers] > [data-line]::before {
-  counter-increment: line;
-  content: counter(line);
+  h3 {
+    @apply text-xl font-medium;
+  }
 
-  /* Other styling */
-  display: inline-block;
-  width: 0.75rem;
-  margin-right: 1.5rem;
-  text-align: right;
-  color: gray;
-  opacity: 0.75;
-}
+  ul,
+  ol {
+    @apply mb-4 text-lg text-slate-300;
+  }
 
-[data-highlighted-line] {
-  @apply border-l-blue-400 bg-gray-400 bg-opacity-10;
-}
+  pre {
+    @apply max-h-fit overflow-x-auto rounded-xl bg-transparent p-0 pb-4 text-base;
+  }
 
-[data-highlighted-chars] {
-  @apply rounded-md border border-gray-400 border-opacity-50 bg-gray-500 bg-opacity-10 p-1;
+  // multi-line code block
+  pre code {
+    @apply bg-opacity-90 p-5;
+  }
+
+  /* Inline code blocks */
+  :not(pre) > code {
+    @apply rounded-md bg-white  bg-opacity-10 p-1;
+  }
+
+  pre [data-line] {
+    padding: 0 0.5rem;
+  }
+
+  code[data-line-numbers] {
+    counter-reset: line;
+  }
+
+  code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 0.75rem;
+    margin-right: 1.5rem;
+    text-align: right;
+    color: gray;
+    opacity: 0.75;
+  }
+
+  [data-highlighted-line] {
+    @apply border-l-blue-400 bg-gray-400 bg-opacity-10;
+  }
+
+  [data-highlighted-chars] {
+    @apply rounded-md border border-gray-400 border-opacity-50 bg-gray-500 bg-opacity-10 p-1;
+  }
 }
