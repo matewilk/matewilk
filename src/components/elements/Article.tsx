@@ -1,4 +1,3 @@
-import { marked } from "marked";
 import Link from "next/link";
 
 import { createSlug } from "src/lib";
