@@ -1,12 +1,12 @@
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { RiCloseLine } from "react-icons/ri";
 
 const MobileNavigation = ({ changeState }) => {
-  const router = useRouter();
+  const pathname = usePathname();
 
-  const checkroute = router.route !== "/" && router.route !== "/homepage3";
+  const checkroute = pathname !== "/";
 
   const handleClick = () => {
     changeState(false);
