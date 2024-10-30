@@ -2,6 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { createSlug, filterPostsByPage, sortPostByDate } from ".";
+import { allBlogs, Blog, allProjects, Project } from "contentlayer/generated";
 
 const LIMIT = 6;
 
@@ -21,12 +22,6 @@ export type BlogPost = {
 // Get all post
 const getAllPosts = (urlPath: string): Array<string> => {
   return fs.readdirSync(path.join(process.cwd(), `src/${urlPath}`));
-};
-
-// get all posts slug
-const getAllPostsSlug = (urlPath: string): Array<string> => {
-  const files = getAllPosts(urlPath);
-  return files.map((filename) => filename.replace(/\.(md|mdx)$/, ""));
 };
 
 // Get all posts data
@@ -52,44 +47,69 @@ const getAllPostsData = (urlPath: string): Array<BlogPost> => {
 
 // Get posts by page
 const getPostsByPage = ({
-  page = 1,
-  limit = 6,
-  urlPath = "posts",
-}): { hasMore: boolean; posts: Array<BlogPost> } => {
-  const tempPosts = getAllPostsData(urlPath);
-  const posts = filterPostsByPage(tempPosts, page, limit);
+  page,
+  limit = LIMIT,
+}: {
+  page: number;
+  limit?: number;
+}) => {
+  const start = (page - 1) * limit;
+  const end = start + limit;
+  const posts = allProjects
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(start, end);
+
   return {
     posts,
-    hasMore: limit * page < tempPosts.length,
+    hasMore: end < allBlogs.length,
   };
 };
 
-// Get all posts path (for nextjs getStaticPaths)
-const getPostsPath = (urlPath = "posts") => {
-  const postsSlug = getAllPostsSlug(urlPath);
+const getPostsPageParams = (): Array<{ params: { slug: string } }> => {
+  const pages = Math.ceil(allProjects.length / LIMIT);
+  return Array.from({ length: pages }, (_, i) => ({
+    params: { slug: String(i + 1) },
+  }));
+};
 
-  const paths = postsSlug.map((slug) => {
-    return {
-      params: {
-        slug,
-      },
-    };
-  });
+const getBlogsByPage = ({
+  page,
+  limit = LIMIT,
+}: {
+  page: number;
+  limit?: number;
+}) => {
+  const start = (page - 1) * limit;
+  const end = start + limit;
+  const blogs = allBlogs
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(start, end);
 
-  return paths;
+  return {
+    blogs,
+    hasMore: end < allBlogs.length,
+  };
+};
+
+const getBlogsPageParams = (): Array<{ params: { slug: string } }> => {
+  const pages = Math.ceil(allBlogs.length / LIMIT);
+  return Array.from({ length: pages }, (_, i) => ({
+    params: { slug: String(i + 1) },
+  }));
+};
+
+const getSingleBlog = (slug: string): Blog | undefined => {
+  const post = allBlogs.find(
+    (post) => post._raw.sourceFileName.replace(".md", "") === slug
+  );
+  return post;
 };
 
 // Get single post data
-const getSinglePost = (slug: string, urlPath = "posts") => {
-  const post = fs.readFileSync(
-    path.join(process.cwd(), `src/${urlPath}`, slug + ".md"),
-    "utf-8"
+const getSinglePost = (slug: string): Project | undefined => {
+  return allProjects.find(
+    (post) => post._raw.sourceFileName.replace(".md", "") === slug
   );
-  const { data: frontmatter, content } = matter(post);
-  return {
-    ...(frontmatter as BlogPost),
-    content,
-  };
 };
 
 // Get all Categories
@@ -130,12 +150,12 @@ const getCategoryPaths = (urlPath = "posts") => {
 
 // Get all posts by category
 const getPostsByCategory = ({
-  urlPath = "blogs",
+  urlPath = "posts",
   category,
   page = 1,
-  limit = 6,
+  limit = LIMIT,
 }) => {
-  const allPosts = getAllPostsData(urlPath);
+  const allPosts = urlPath === "posts" ? allProjects : allBlogs;
 
   const filteredPosts = allPosts.filter((post) => {
     const temp = post.category.map((cat) => createSlug(cat));
@@ -152,15 +172,18 @@ const getPostsByCategory = ({
 
 // Get recent posts
 const getRecentPosts = (urlPath = "posts") => {
-  const allPosts = getAllPostsData(urlPath);
+  const allPosts = urlPath === "posts" ? allProjects : allBlogs;
 
   return allPosts.slice(0, 5);
 };
 
 export {
   getPostsByPage,
+  getPostsPageParams,
+  getBlogsByPage,
+  getBlogsPageParams,
+  getSingleBlog,
   getPostsByCategory,
-  getPostsPath,
   getSinglePost,
   getAllCategories,
   getCategoryPaths,

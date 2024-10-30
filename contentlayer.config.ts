@@ -3,9 +3,9 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-export const Post = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: `**/*.md`,
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: `blogs/**/*.md`,
   contentType: "markdown",
   fields: {
     title: { type: "string", required: true },
@@ -17,14 +17,33 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+export const Project = defineDocumentType(() => ({
+  name: "Project",
+  filePathPattern: `posts/**/*.md`,
+  contentType: "markdown",
+  fields: {
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
+    category: { type: "list", of: { type: "string" }, required: true },
+    cover: { type: "string", required: true },
+    thumb: { type: "string", required: true },
+  },
+}));
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: "everforest-dark",
+  keepBackground: false,
+};
+
 export default makeSource({
-  contentDirPath: "./src/blogs",
-  documentTypes: [Post],
+  contentDirPath: "src",
+  documentTypes: [Blog, Project],
   markdown: {
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
-      [rehypePrettyCode, { theme: "nord" }],
+      [rehypePrettyCode, options],
     ],
   },
 });

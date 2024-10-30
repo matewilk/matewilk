@@ -14,7 +14,7 @@ In this article, we’ll refactor a simple URL shortener service repository inte
 
 Let's first look at a typical imperative design for a `UrlRepository` interface, where errors are thrown inside the methods. The interface looks simple, and at first glance, it seems effective:
 
-```typescript
+```typescript showLineNumbers
 export interface UrlRepository {
   create: (url: ShortenedUrl.Draft) => Promise<ShortenedUrl>;
   findById: (id: number) => Promise<ShortenedUrl | null>;
@@ -35,7 +35,7 @@ export namespace ShortenedUrl {
 
 In this interface, the repository provides methods to create, find, and retrieve the next ID for shortened URLs. Errors are typically handled by throwing exceptions when things go wrong (e.g., duplicate URLs, missing records, etc.). Here's an example implementation using an in-memory store:
 
-```typescript
+```typescript showLineNumbers {11, 27}
 export class InMemoryUrlRepository implements UrlRepository {
   private store: Record<number, ShortenedUrl> = {};
 
@@ -78,7 +78,7 @@ To address error handling more effectively, we can use a `Result` type to repres
 
 We modify `UrlRepository` interface to user a `Result` type:
 
-```typescript
+```typescript showLineNumbers /Result/#v {9-19}
 export interface UrlRepository {
   create: (url: ShortenedUrl.Draft) => Promise<Result<ShortenedUrl, Error>>;
 
@@ -105,6 +105,7 @@ export type ShortenedUrl = {
   hash: string;
   createdAt: Date;
 };
+
 export namespace ShortenedUrl {
   export type Draft = Omit<ShortenedUrl, "createdAt">;
 }
@@ -116,7 +117,7 @@ The generic `Result` type can represent both success and error cases. The `Ok` t
 
 With the `Result` type in place, we can now refactor the `InMemoryUrlRepository` implementation to use the `Result` type for error handling:
 
-```typescript
+```typescript showLineNumbers /Result/#v {16-19, 24, 26, 32, 34, 43-46, 49-52, 54}
 import { ShortenedUrl, UrlRepository, Result } from "./UrlRepository";
 
 export class InMemoryUrlRepository implements UrlRepository {

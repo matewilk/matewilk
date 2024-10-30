@@ -6,7 +6,18 @@ import { useState } from "react";
 
 import { createSlug } from "../../lib";
 import { shimmer, toBase64 } from "../../lib/utils";
-import { BlogPost } from "../../lib/blogging";
+
+type BlogTileProps = {
+  type: string;
+  title: string;
+  date: string;
+  thumb: string;
+  category: string[];
+  slug: string;
+  link?: string;
+  imagegallery?: string[];
+  videogallery?: string[];
+};
 
 const BlogTile = ({
   type,
@@ -18,7 +29,7 @@ const BlogTile = ({
   link = "",
   imagegallery = [],
   videogallery = [],
-}: BlogPost) => {
+}: BlogTileProps) => {
   const [videoGalleryOpen, setVideoGalleryOpen] = useState(false);
   const [imageGalleryOpen, setImageGalleryOpen] = useState(false);
 
@@ -84,7 +95,7 @@ const BlogTile = ({
       <h5 className="mb-0">
         <Link
           href={link ? link : `/${type}/${slug}`}
-          target="_blank"
+          target={link ? "_blank" : undefined}
           className="block overflow-hidden overflow-ellipsis whitespace-nowrap transition-colors duration-500 hover:text-primary"
           title={title}
         >

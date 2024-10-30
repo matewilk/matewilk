@@ -1,12 +1,11 @@
+import { Blog, Project } from "contentlayer/generated";
 import Link from "next/link";
-
-import { BlogPost } from "src/lib/blogging";
 
 export const RecentBlogs = ({
   posts,
   type,
 }: {
-  posts: Array<BlogPost>;
+  posts: Array<Blog | Project>;
   type: "blogs" | "projects";
 }) => {
   return (
@@ -15,27 +14,40 @@ export const RecentBlogs = ({
         {type === "projects" ? "Latest Projects" : "Recent Blogs"}
       </h5>
       <ul className="mb-0 list-none pl-0">
-        {posts.map((post, index) => (
-          <li key={index} className="mb-4 last:mb-0">
-            <p className="mb-0">
-              <Link
-                href={
-                  type === "blogs" ? `${post.link}` : `/project/${post.slug}`
-                }
-                className="text-heading no-underline hover:text-primary hover:underline"
-              >
-                {post.title}{" "}
-              </Link>
-            </p>
-            <small className="text-body">
-              {`${new Date(post.date).toLocaleDateString("en-us", {
-                month: "short",
-              })} ${new Date(post.date).toLocaleDateString("en-us", {
-                day: "2-digit",
-              })}, ${new Date(post.date).getFullYear()}`}
-            </small>
-          </li>
-        ))}
+        {posts.map((post, index) => {
+          const postDate = post.date ? new Date(post.date) : null;
+
+          const isBlogPost = "link" in post;
+          const href =
+            isBlogPost && post.link
+              ? post.link
+              : type === "blogs"
+              ? `/blog/${post._raw?.sourceFileName?.replace(".md", "")}`
+              : `/project/${post._raw?.sourceFileName?.replace(".md", "")}`;
+
+          const isExternal = isBlogPost && post.link?.startsWith("http");
+
+          return (
+            <li key={`${type}-${index}`} className="mb-4 last:mb-0">
+              <p className="mb-0">
+                <Link
+                  href={href}
+                  target={isExternal ? "_blank" : undefined}
+                  className="text-heading no-underline hover:text-primary hover:underline"
+                >
+                  {post.title}
+                </Link>
+              </p>
+              {postDate && (
+                <small className="text-body">
+                  {postDate.toLocaleDateString("en-us", { month: "short" })}{" "}
+                  {postDate.toLocaleDateString("en-us", { day: "2-digit" })},{" "}
+                  {postDate.getFullYear()}
+                </small>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </>
   );
