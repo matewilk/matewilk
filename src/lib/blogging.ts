@@ -3,19 +3,6 @@ import { allBlogs, Blog, allProjects, Project } from "contentlayer/generated";
 
 const LIMIT = 6;
 
-export type BlogPost = {
-  title: string;
-  date: string;
-  category: Array<string>;
-  cover: string;
-  thumb: string;
-  link?: string;
-  slug: string;
-  imagegallery?: Array<string>;
-  videogallery?: Array<string>;
-  type?: "project" | "blog";
-};
-
 // Get all post
 const getAllPosts = (urlPath: string = "posts"): Array<Blog | Project> => {
   return urlPath === "posts" ? allProjects : allBlogs;

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import BlogTile from "src/components/elements/BlogTile";
 import Breadcrumb from "src/components/elements/Breadcrumb";
-import { BlogPost } from "src/lib/blogging";
 import { childrenAnimation } from "src/lib/motion";
 import { Motion } from "src/components/utils/MotionWrapper";
 import { Categories } from "src/components/elements/Categories";
