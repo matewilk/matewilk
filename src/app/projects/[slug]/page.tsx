@@ -3,15 +3,19 @@ import { Metadata, ResolvingMetadata } from "next";
 import {
   getAllCategories,
   getPostsByPage,
+  getPostsPageParams,
   getRecentPosts,
 } from "src/lib/blogging";
 import { BlogGrid } from "src/components/elements/BlogGrid";
+
+export async function generateStaticParams() {
+  return getPostsPageParams();
+}
 
 const Posts = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const { posts, hasMore } = getPostsByPage({
     page: parseInt(slug),
-    urlPath: "posts",
   });
   const categories = getAllCategories("posts");
   const recentPosts = getRecentPosts("posts");

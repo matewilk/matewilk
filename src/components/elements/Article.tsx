@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { createSlug } from "src/lib";
 import { FloatingImages } from "src/components/elements/FloatingImages";
+import { Markdown } from "contentlayer/core";
 
 // import Comments from "../../components/utils/Comments";
 
@@ -10,12 +11,12 @@ export const Article = ({
   cover,
   date,
   category,
-  content,
+  body,
 }: {
   cover: string;
   date: string;
   category: Array<string>;
-  content: string;
+  body: Markdown;
 }) => {
   return (
     <>
@@ -51,7 +52,7 @@ export const Article = ({
       </div>
       <div
         className="post-body mt-4"
-        dangerouslySetInnerHTML={{ __html: marked(content) }}
+        dangerouslySetInnerHTML={{ __html: body.html }}
       ></div>
       {/* <div className="post-comments mt-8">
             <Comments title={title} slug={slug} />

@@ -1,6 +1,7 @@
 const withPlugins = require("next-compose-plugins");
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
+const { withContentlayer } = require("next-contentlayer");
 
 const nextConfig = {
   async headers() {
@@ -30,18 +31,20 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [
+module.exports = withContentlayer(
+  withPlugins(
     [
-      withPWA,
-      {
-        pwa: {
-          disable: process.env.NODE_ENV === "development",
-          dest: "public",
-          runtimeCaching,
+      [
+        withPWA,
+        {
+          pwa: {
+            disable: process.env.NODE_ENV === "development",
+            dest: "public",
+            runtimeCaching,
+          },
         },
-      },
+      ],
     ],
-  ],
-  nextConfig
+    nextConfig
+  )
 );

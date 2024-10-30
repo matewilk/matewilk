@@ -2,21 +2,21 @@ import Link from "next/link";
 
 import BlogTile from "src/components/elements/BlogTile";
 import Breadcrumb from "src/components/elements/Breadcrumb";
-import { BlogPost } from "src/lib/blogging";
 import { childrenAnimation } from "src/lib/motion";
 import { Motion } from "src/components/utils/MotionWrapper";
 import { Categories } from "src/components/elements/Categories";
 import { RecentBlogs } from "./RecentBlogs";
 import { BreadcrumbPath } from "src/components/elements/Breadcrumb";
+import { Blog, Project } from "contentlayer/generated";
 
 type BlogGridProps = {
   type: "projects" | "blogs";
   breadcrumb: Array<BreadcrumbPath>;
   page: string;
-  posts: Array<BlogPost>;
+  posts: Array<Blog | Project>;
   hasMore: boolean;
   categories: Array<string>;
-  recentPosts: Array<BlogPost>;
+  recentPosts: Array<Blog | Project>;
 };
 
 export const BlogGrid = ({
@@ -53,8 +53,11 @@ export const BlogGrid = ({
                       key={index}
                     >
                       <BlogTile
-                        type={type === "projects" ? "project" : "blog"}
-                        {...post}
+                        {...{
+                          ...post,
+                          slug: post._raw.sourceFileName.replace(".md", ""),
+                          type: type === "projects" ? "project" : "blog",
+                        }}
                       />
                     </Motion>
                   ))}

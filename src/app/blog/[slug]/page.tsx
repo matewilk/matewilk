@@ -1,12 +1,16 @@
 import { Metadata, ResolvingMetadata } from "next";
 
-import { getSinglePost } from "src/lib/blogging";
+import { getSingleBlog } from "src/lib/blogging";
 import Breadcrumb from "src/components/elements/Breadcrumb";
 import { Article } from "src/components/elements/Article";
+import { notFound } from "next/navigation";
 
-const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
-  const post = getSinglePost(slug, "blogs");
-  const { title, date, cover, category, content } = post;
+const BlogPage = ({ params: { slug } }: { params: { slug: string } }) => {
+  const blog = getSingleBlog(slug);
+
+  if (!blog) return notFound();
+
+  const { title, date, cover, category, body } = blog;
 
   return (
     <>
@@ -29,14 +33,14 @@ const PostPage = ({ params: { slug } }: { params: { slug: string } }) => {
       />
       <div className="single-post py-24 lg:py-28 xl:py-32">
         <div className="container mx-auto">
-          <Article {...{ cover, date, category, content }} />
+          <Article {...{ cover, date, category, body }} />
         </div>
       </div>
     </>
   );
 };
 
-export default PostPage;
+export default BlogPage;
 
 export async function generateMetadata(
   {
@@ -47,7 +51,10 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { title: parentTitle } = await parent;
-  const post = getSinglePost(slug, "blogs");
+
+  const post = getSingleBlog(slug);
+  if (!post) return { title: "Not Found" };
+
   const { title } = post;
   return {
     title: `${title} - ${parentTitle?.absolute}`,

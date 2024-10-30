@@ -10,11 +10,11 @@ Functional programming (FP) is a paradigm that emphasizes immutability, predicta
 
 In this article, we’ll refactor a simple URL shortener service repository interface from an imperative style that throws errors to a functional programming approach using `Result` types. We'll see how FP can bring clarity and robustness to your code.
 
-#### Imperative Error Throwing
+### Imperative Error Throwing
 
 Let's first look at a typical imperative design for a `UrlRepository` interface, where errors are thrown inside the methods. The interface looks simple, and at first glance, it seems effective:
 
-```typescript
+```typescript showLineNumbers
 export interface UrlRepository {
   create: (url: ShortenedUrl.Draft) => Promise<ShortenedUrl>;
   findById: (id: number) => Promise<ShortenedUrl | null>;
@@ -35,7 +35,7 @@ export namespace ShortenedUrl {
 
 In this interface, the repository provides methods to create, find, and retrieve the next ID for shortened URLs. Errors are typically handled by throwing exceptions when things go wrong (e.g., duplicate URLs, missing records, etc.). Here's an example implementation using an in-memory store:
 
-```typescript
+```typescript showLineNumbers {11, 27}
 export class InMemoryUrlRepository implements UrlRepository {
   private store: Record<number, ShortenedUrl> = {};
 
@@ -72,13 +72,13 @@ export class InMemoryUrlRepository implements UrlRepository {
 
 While straightforward, this implementation lacks comprehensive error handling. Typically in a real-world application, you would need to handle various error cases, such as duplicate URLs, missing records, or database connection issues. The imperative approach can quickly become unwieldy as you add more error checks and edge cases.
 
-#### Introducing the Result Type
+### Introducing the Result Type
 
 To address error handling more effectively, we can use a `Result` type to represent both success and error cases. The `Result` type is a common functional programming pattern that allows to explicitly handle success and error cases.
 
-We modify `UrlRepository` interface to user a `Result` type"
+We modify `UrlRepository` interface to user a `Result` type:
 
-```typescript
+```typescript showLineNumbers /Result/#v {9-19}
 export interface UrlRepository {
   create: (url: ShortenedUrl.Draft) => Promise<Result<ShortenedUrl, Error>>;
 
@@ -105,6 +105,7 @@ export type ShortenedUrl = {
   hash: string;
   createdAt: Date;
 };
+
 export namespace ShortenedUrl {
   export type Draft = Omit<ShortenedUrl, "createdAt">;
 }
@@ -112,11 +113,11 @@ export namespace ShortenedUrl {
 
 The generic `Result` type can represent both success and error cases. The `Ok` type represents a successful result, while the `Err` type represents an error. By using the `Result` type, we can explicitly handle both success and error cases in a type-safe manner.
 
-#### Revisiting the Implementation
+### Revisiting the Implementation
 
 With the `Result` type in place, we can now refactor the `InMemoryUrlRepository` implementation to use the `Result` type for error handling:
 
-```typescript
+```typescript showLineNumbers /Result/#v {16-19, 24, 26, 32, 34, 43-46, 49-52, 54}
 import { ShortenedUrl, UrlRepository, Result } from "./UrlRepository";
 
 export class InMemoryUrlRepository implements UrlRepository {
@@ -176,7 +177,7 @@ export class InMemoryUrlRepository implements UrlRepository {
 }
 ```
 
-#### Key Improvements
+### Key Improvements
 
 1. **Explicit Error Handling**: Instead of allowing function to return unpredictable results or throw exceptions, each method now returns a `Result` type object that explicitly indicates success or failure. This makes the flow of the code more predictable and easier to reason about.
 2. **Type Safety**: By using TypeScript's type system, we ensure that consumers of these methods handle both success and error cases correctly. This can help prevent runtime errors and improve code quality.
@@ -184,7 +185,7 @@ export class InMemoryUrlRepository implements UrlRepository {
 4. **Predictable Control Flow**: By using the `Result` type, developeers can chain together multiple operations and handle errors in consistent manner, ofter using pattern matching or combinators to handle different cases.
 5. **Avoiding Exceptions for Flow Control**: Functional programming discourages using exceptions for regular control flow. Instead errors are treated as data that can be passed around and handled in a predictable way.
 
-#### Takeaways
+## Takeaways
 
 The transition from the initial implementation to one that uses the Result type exemplifies a shift towards functional programming principles:
 
@@ -192,6 +193,6 @@ The transition from the initial implementation to one that uses the Result type 
 - **Pure Functions**: Functions that, given the same input, always return the same output without side effects. While our repository interacts with a store, the use of `Result` types helps in maintaining purity by avoiding hidden side effects through exceptions.
 - **Composability**: Functional code tends to be more composable, allowing small, reusable functions to build complex operations.
 
-#### Conclusion
+## Conclusion
 
 Adopting functional programming principles can lead to more robust, predictable, and maintainable code. By using the `Result` type to handle errors explicitly, we can improve the clarity and reliability of our code. In the next article, we'll explore how to compose functions that return `Result` types to build more complex operations.

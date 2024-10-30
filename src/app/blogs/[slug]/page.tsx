@@ -2,23 +2,25 @@ import { Metadata, ResolvingMetadata } from "next";
 
 import {
   getAllCategories,
-  getPostsByPage,
+  getBlogsByPage,
+  getBlogsPageParams,
   getRecentPosts,
 } from "src/lib/blogging";
 import { BlogGrid } from "src/components/elements/BlogGrid";
 
-const Posts = async ({ params }: { params: { slug: string } }) => {
+export async function generateStaticParams() {
+  return getBlogsPageParams();
+}
+
+const Blogs = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
-  const { posts, hasMore } = getPostsByPage({
-    page: parseInt(slug),
-    urlPath: "blogs",
-  });
+  const { blogs, hasMore } = getBlogsByPage({ page: parseInt(slug) });
   const categories = getAllCategories("blogs");
   const recentPosts = getRecentPosts("blogs");
 
   const page = Array.isArray(slug) ? slug[0] : slug ?? "1";
 
-  if (!posts) return null;
+  if (!blogs) return null;
 
   const breadcrumb = [
     {
@@ -35,7 +37,7 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
       type="blogs"
       breadcrumb={breadcrumb}
       page={page}
-      posts={posts}
+      posts={blogs}
       hasMore={hasMore}
       categories={categories}
       recentPosts={recentPosts}
@@ -43,7 +45,7 @@ const Posts = async ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default Posts;
+export default Blogs;
 
 export async function generateMetadata(
   {
