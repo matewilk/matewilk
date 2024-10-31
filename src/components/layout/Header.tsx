@@ -48,7 +48,7 @@ const Header = () => {
                   }}
                   className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-grey p-4 text-center"
                 >
-                  <MobileNavigation changeState={setMobileMenu} />
+                  <MobileNavigation toggleMenu={setMobileMenu} />
                 </motion.div>
               )}
             </AnimatePresence>

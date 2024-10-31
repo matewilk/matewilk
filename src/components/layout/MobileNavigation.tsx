@@ -1,22 +1,27 @@
+import { Dispatch, SetStateAction } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { RiCloseLine } from "react-icons/ri";
 
-const MobileNavigation = ({ changeState }) => {
-  const router = useRouter();
+const MobileNavigation = ({
+  toggleMenu,
+}: {
+  toggleMenu: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const pathname = usePathname();
 
-  const checkroute = router.route !== "/" && router.route !== "/homepage3";
+  const checkroute = pathname !== "/";
 
   const handleClick = () => {
-    changeState(false);
+    toggleMenu(false);
   };
 
   return (
     <>
       <button
         className="btn btn-small btn-transparent absolute left-auto right-4 top-4 z-10 h-10 w-10 rounded-full p-0 text-center text-3xl"
-        onClick={() => changeState(false)}
+        onClick={() => toggleMenu(false)}
       >
         <RiCloseLine className="inline" />
       </button>
