@@ -68,5 +68,14 @@ export async function generateMetadata(
   const { title } = await parent;
   return {
     title: `Projects - ${title?.absolute}`,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/projects/${slug}`,
+    },
+    authors: [
+      {
+        name: "Mat Wilk",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+      },
+    ],
   };
 }
