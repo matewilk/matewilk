@@ -92,4 +92,13 @@ export default async function Home() {
 
 export const metadata: Metadata = {
   title: "matewilk - Software Engineer",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+  },
+  authors: [
+    {
+      name: "Mat Wilk",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+    },
+  ],
 };
