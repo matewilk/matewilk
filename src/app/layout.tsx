@@ -58,7 +58,11 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
   title: "Mat Wilk - Software Engineer",
-  description: "description",
+  description:
+    "10x Unicorn Developer, Superstar Coder, AI Whisperer, Code Magician, Creative Problem Solver, Genius Innovator, Tech Visionary, Digital Alchemist, Code Ninja, Software Sorcerer, Full-Stack Wizard, Agile Architect, Cloud Conjurer, Data Dynamo, Cybersecurity Sentinel, UI/UX Virtuoso, DevOps Dynamo, Open Source Advocate, Tech Trailblazer",
   keywords:
     "Software Engineer, React, Next.js, TypeScript, Node.js, JavaScript",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
